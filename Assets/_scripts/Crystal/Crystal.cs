@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace EK.Crystal
@@ -11,22 +12,35 @@ namespace EK.Crystal
     #region Variables
     
     [SerializeField] int _crystalValue;
+    Transform _transform;
     private Harvester _harvester;
+    [SerializeField] ParticleSystem _spawnParticle;
+    [SerializeField] ParticleSystem _deathParticle;
+
+
+    
 
     public int CrystalValue
     {
         get { return _crystalValue; }
     }
 
-    #endregion
-    
-   
-    #region Methods
-   
-    //Destroy me
-    public void Die()
+        #endregion
+        private void Start()
+        {
+            _transform = GetComponent<Transform>();
+            _spawnParticle.Play();
+        }
+
+        #region Methods
+
+        //Destroy me
+        public void Die()
     {
-        Destroy(gameObject);
+        Vector3 spawpoint = _transform.position;
+        ParticleSystem spawnParticle = Instantiate(_deathParticle, spawpoint, Quaternion.identity);
+       
+        Destroy(gameObject, 0.1f);
     }
 
     #endregion
