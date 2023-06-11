@@ -108,7 +108,7 @@ public class UnitCommon : Unit, IDeath
     //interface die
     public void Die()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -102,7 +102,7 @@ MonoBehaviour:
   _strenght: 15
   _spawnpoint: {fileID: 1690699897206724365, guid: 595cc6d03d1ad254f996c4648f7ad759, type: 3}
   _myFaction: 0
-  _price: 10
+  _price: 3
   MyRigidBody: {fileID: 77495236875070139}
   MyInitialSpeed: 0
   _fightTime: 0.5
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rocketFlameParticle: {fileID: 6075769462109663926}
   _jetSmokeParticle: {fileID: 7487424170997084379}
+  _explosionPaticle: {fileID: 2433282508523890284, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
 --- !u!1001 &77495235395626054
 PrefabInstance:
   m_ObjectHideFlags: 0
