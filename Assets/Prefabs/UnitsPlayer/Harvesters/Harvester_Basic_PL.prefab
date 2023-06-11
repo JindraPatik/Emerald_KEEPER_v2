@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rocketFlameParticle: {fileID: 6075769462109663926}
   _jetSmokeParticle: {fileID: 7487424170997084379}
-  _explosionPaticle: {fileID: 2433282508523890284, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+  _explosionPaticle: {fileID: 2433282508523890284, guid: 10a4c30288217824cb35dc7dba7d55b7, type: 3}
 --- !u!1001 &77495235395626054
 PrefabInstance:
   m_ObjectHideFlags: 0
