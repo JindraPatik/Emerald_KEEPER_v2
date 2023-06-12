@@ -69,18 +69,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabs:
   - {fileID: 77495236875070132, guid: a1110994a81a00a4e89368e7599ada09, type: 3}
-  _health: 5
-  _resourcesValue: 0
+  _health: 100
+  _resourcesValue: 10
   _resourcesIncreasedPerSecond: 1
   _spawnPoint: {fileID: 0}
   _unitIndex: 0
   _playerFaction: 1
   _resourcesTXT: {fileID: 0}
-  _notEnoughRsourcesText: {fileID: 0}
+  _notEnoughResourcesText: {fileID: 0}
   _myHealth: {fileID: 0}
   _myHealthBar: {fileID: 0}
-  _gameOver: {fileID: 0}
-  _looseText: {fileID: 0}
 --- !u!1001 &1492994446189531505
 PrefabInstance:
   m_ObjectHideFlags: 0

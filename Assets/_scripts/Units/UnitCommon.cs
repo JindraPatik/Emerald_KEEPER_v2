@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ public class UnitCommon : Unit, IDeath
     [HideInInspector] public float MyInitialSpeed;
     [SerializeField] float _fightTime;
     public bool IsMoving = true;
-    //public float MyCurrentSpeed;
+    public Action OnUnitDie;
+    public Vector3 UnitPosition;
 
     #endregion
 
@@ -95,7 +97,6 @@ public class UnitCommon : Unit, IDeath
     }
     IEnumerator StopToAttack()
     {
-        //MyCurrentSpeed = Speed;
         StopUnitMovement();
         yield return new WaitForSeconds(_fightTime);
         MoveAgain();
@@ -108,6 +109,8 @@ public class UnitCommon : Unit, IDeath
     //interface die
     public void Die()
     {
+        UnitPosition = transform.position;
+        OnUnitDie?.Invoke();
         Destroy(gameObject);
     }
 

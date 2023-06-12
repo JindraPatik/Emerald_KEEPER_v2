@@ -17,9 +17,13 @@ public class Harvester : UnitCommon, ICollector
     private float _endTime = 1f;
     private bool _isMovingUp;
     private float _moveUpSpeed = 2f;
-    [SerializeField] AnimationCurve _curve;
     private Vector3 goalRotation;
+    private Vector3 _unitCurrentPosition;
 
+    public Action OnDeliverCrysral;
+
+    [SerializeField] AnimationCurve _curve;
+    [SerializeField] GameObject _deliveryCrystalParticles;
     
     public float CrystalValue
     {
@@ -35,7 +39,6 @@ public class Harvester : UnitCommon, ICollector
       
     #endregion
     
-    
     #region InitialMethods
 
     public override void Awake() 
@@ -46,6 +49,12 @@ public class Harvester : UnitCommon, ICollector
         _isMovingUp = false;
         FlipInitialRotation();
     }
+
+    private void OnEnable()
+    {
+        OnDeliverCrysral += PlayDeliveryParticles;
+    }
+
 
     public override void Start()
     {
@@ -142,8 +151,12 @@ public class Harvester : UnitCommon, ICollector
         //pokud je harvester nalozeny a narazi do hrace
         if (other.gameObject.TryGetComponent<Player>(out _player) && _isLoaded)
         {
+            _unitCurrentPosition = transform.position;
             unLoad();
-            Die();
+            OnDeliverCrysral?.Invoke();
+            Destroy(gameObject);
+            OnDeliverCrysral -= PlayDeliveryParticles;
+            //Die();
         }
 
         //TODO do budoucna ještě počítat že může kolidovat s něčím jiným
@@ -174,5 +187,15 @@ public class Harvester : UnitCommon, ICollector
         Vector3 moveUpDestination = new Vector3 (transform.position.x,_harvesterHeightMovement, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, moveUpDestination, _current);
     }
-}
     #endregion
+
+    #region Effects
+
+    private void PlayDeliveryParticles()
+    {
+        Instantiate(_deliveryCrystalParticles, _unitCurrentPosition, Quaternion.identity);
+    }
+
+    #endregion;
+
+}

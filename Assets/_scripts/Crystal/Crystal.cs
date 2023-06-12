@@ -16,8 +16,6 @@ namespace EK.Crystal
     private Harvester _harvester;
     [SerializeField] ParticleSystem _spawnParticle;
     [SerializeField] ParticleSystem _deathParticle;
-
-
     
 
     public int CrystalValue
@@ -37,10 +35,7 @@ namespace EK.Crystal
         //Destroy me
         public void Die()
     {
-        Vector3 spawpoint = _transform.position;
-        ParticleSystem spawnParticle = Instantiate(_deathParticle, spawpoint, Quaternion.identity);
-       
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject);
     }
 
     #endregion

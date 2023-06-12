@@ -2,16 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleSpawner : MonoBehaviour
+public class UnitParticleSpawner : MonoBehaviour
 {
     [SerializeField] ParticleSystem _rocketFlameParticle;
     [SerializeField] ParticleSystem _jetSmokeParticle;
-    [SerializeField] ParticleSystem _explosionPaticle;
+    [SerializeField] GameObject _explosionPaticleGO;
     Rigidbody _myRigidbody;
+    private UnitCommon _unitCommon;
 
-    void Start()
+
+    private void Awake()
     {
         _myRigidbody = GetComponent<Rigidbody>();
+        _unitCommon = GetComponent<UnitCommon>();
+    }
+
+    private void OnEnable()
+    {
+        _unitCommon.OnUnitDie += SpawnDeathParticles;
+    }
+    void Start()
+    {
 
         _rocketFlameParticle.Play();
         _jetSmokeParticle.Play();
@@ -19,18 +30,14 @@ public class ParticleSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        
         _rocketFlameParticle.Stop();
         _jetSmokeParticle.Stop();
-        SpawnParticlesInPlace(_explosionPaticle);
-        
     }
 
-    public void SpawnParticlesInPlace(ParticleSystem particleSystem)
+    public void SpawnDeathParticles()
     {
         Vector3 myPosition = _myRigidbody.transform.position;
-        ParticleSystem particlesObjectToSpawn = Instantiate(_explosionPaticle, myPosition, Quaternion.identity);
-        particleSystem.Play();
+        GameObject particlesObjectToSpawn = Instantiate(_explosionPaticleGO, myPosition, Quaternion.identity);
     }
    
 }
