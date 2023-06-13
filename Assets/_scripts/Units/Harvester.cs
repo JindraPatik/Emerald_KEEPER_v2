@@ -97,7 +97,6 @@ public class Harvester : UnitCommon, ICollector
         {
             goalRotation = new Vector3(transform.rotation.x, transform.rotation.y - 180f, transform.rotation.z);
         }
-
         else
         {
             goalRotation = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
@@ -124,16 +123,12 @@ public class Harvester : UnitCommon, ICollector
   
     #region Methods
    
-    //vyloz Harvester
     public bool unLoad()
     {
         _isLoaded = false;
         return _isLoaded;
     }
 
-    
-
-    //zjisti jakou hodnotu ma crystal
     public void GetCrystalValue(Crystal crystal)
     {
         _crystalCollected = crystal.CrystalValue;
@@ -145,7 +140,6 @@ public class Harvester : UnitCommon, ICollector
         if (other.gameObject.TryGetComponent<Crystal>(out _crystal) && !_isLoaded)
         {
             Collect();
-            //MoveDirectionSwitch(MyInitialSpeed);
         }
         
         //pokud je harvester nalozeny a narazi do hrace
@@ -156,9 +150,7 @@ public class Harvester : UnitCommon, ICollector
             OnDeliverCrysral?.Invoke();
             Destroy(gameObject);
             OnDeliverCrysral -= PlayDeliveryParticles;
-            //Die();
         }
-
         //TODO do budoucna ještě počítat že může kolidovat s něčím jiným
         else
         {
@@ -193,7 +185,8 @@ public class Harvester : UnitCommon, ICollector
 
     private void PlayDeliveryParticles()
     {
-        Instantiate(_deliveryCrystalParticles, _unitCurrentPosition, Quaternion.identity);
+        Vector3 _deliveryParticlesSpawnPoint = new Vector3(_unitCurrentPosition.x, _unitCurrentPosition.y + 30, _unitCurrentPosition.z);
+        Instantiate(_deliveryCrystalParticles, _deliveryParticlesSpawnPoint, Quaternion.identity);
     }
 
     #endregion;
