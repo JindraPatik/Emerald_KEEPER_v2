@@ -19,7 +19,6 @@ public class UnitCommon : Unit, IDeath
 
     #region Initial Methods
 
-    //Initialization
     public virtual void Awake()
     {
         MyRigidBody = GetComponent<Rigidbody>();
@@ -34,17 +33,14 @@ public class UnitCommon : Unit, IDeath
 
     #endregion
 
-
     #region Movement methods
 
-    //base moving
     public override void Move(float speed)
     {
         MyRigidBody.velocity = new Vector3(speed, 0f, 0f);
         _myTransform = transform;
     }
 
-    //switch to direction
     public float MoveDirectionSwitch()
     {
         return Speed = -Speed;

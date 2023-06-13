@@ -25,6 +25,7 @@ private float _maxHealth;
 [SerializeField] Image _myHealthBar;
 
 public event Action OnPlayerDies;
+public event Action OnPlayerHit;
 
 public Unit.Faction PlayerFaction
 {
@@ -154,6 +155,7 @@ private void OnTriggerEnter(Collider other)
             {
                 Health -= unit.Strenght;
                 UpdateHealthBar(_maxHealth, Health);
+                OnPlayerHit?.Invoke();
                 Destroy(unit.gameObject);
                 PlayerDeathCondition();
             }
