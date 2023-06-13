@@ -28,6 +28,7 @@ namespace EK.Crystal
         {
             _transform = GetComponent<Transform>();
             _spawnParticle.Play();
+
         }
 
         #region Methods

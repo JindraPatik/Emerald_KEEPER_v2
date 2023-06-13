@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using EK.Crystal;
 using UnityEngine;
 
@@ -87,6 +88,7 @@ public class Harvester : UnitCommon, ICollector
             _isMovingUp = false;
             _current = 0;
             MoveAgain();
+            
         }
 
     }
@@ -187,8 +189,12 @@ public class Harvester : UnitCommon, ICollector
     private void PlayDeliveryParticles()
     {
         Vector3 _deliveryParticlesSpawnPoint = new Vector3(_unitCurrentPosition.x, _unitCurrentPosition.y + 30, _unitCurrentPosition.z);
-        Instantiate(_deliveryCrystalParticles, _deliveryParticlesSpawnPoint, Quaternion.identity);
+        GameObject particleInstance;
+        particleInstance = Instantiate(_deliveryCrystalParticles, _deliveryParticlesSpawnPoint, Quaternion.identity);
+        Destroy(particleInstance, 1.5f);
     }
+
+  
 
     #endregion;
 
