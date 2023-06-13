@@ -149,6 +149,7 @@ public class Harvester : UnitCommon, ICollector
             unLoad();
             OnDeliverCrysral?.Invoke();
             Destroy(gameObject);
+
             OnDeliverCrysral -= PlayDeliveryParticles;
         }
         //TODO do budoucna ještě počítat že může kolidovat s něčím jiným

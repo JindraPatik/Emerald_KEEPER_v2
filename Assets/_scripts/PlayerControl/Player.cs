@@ -24,8 +24,9 @@ private float _maxHealth;
 [SerializeField] TMP_Text _myHealth;
 [SerializeField] Image _myHealthBar;
 
-public event Action OnPlayerDies;
-public event Action OnPlayerHit;
+public Action OnPlayerDies;
+public Action OnPlayerHit;
+public Action OnCrysralDelivery;
 
 public Unit.Faction PlayerFaction
 {
@@ -144,6 +145,7 @@ private void OnTriggerEnter(Collider other)
         if (harvester.IsLoaded)
         {
             ResourcesValue += harvester.CrystalValue;
+            OnCrysralDelivery?.Invoke();
         }
     }
 

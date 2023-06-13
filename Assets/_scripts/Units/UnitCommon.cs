@@ -15,6 +15,8 @@ public class UnitCommon : Unit, IDeath
     public Action OnUnitDie;
     public Vector3 UnitPosition;
 
+    public Action UnitHit;
+
     #endregion
 
     #region Initial Methods
@@ -125,6 +127,8 @@ public class UnitCommon : Unit, IDeath
         {
             if (Strenght > otherAttacker.Strenght)
             {
+                UnitHit?.Invoke();
+
                 if (otherAttacker is IDeath otherAttackerDeath)
                 {
                     StartCoroutine(StopToAttack());
