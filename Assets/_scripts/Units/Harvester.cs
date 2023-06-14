@@ -21,7 +21,8 @@ public class Harvester : UnitCommon, ICollector
     private Vector3 goalRotation;
     private Vector3 _unitCurrentPosition;
 
-    public Action OnDeliverCrysral;
+    public event Action OnDeliverCrysral;
+    public event Action OnCrystalCollect;
 
     [SerializeField] AnimationCurve _curve;
     [SerializeField] GameObject _deliveryCrystalParticles;
@@ -31,7 +32,6 @@ public class Harvester : UnitCommon, ICollector
         get { return _crystalCollected; }
     }
     
-    //Is harvester loaded check
     public bool IsLoaded
     {
         get { return _isLoaded; }
@@ -114,6 +114,7 @@ public class Harvester : UnitCommon, ICollector
     public void Collect()
     {
         _isLoaded = true;
+        OnCrystalCollect?.Invoke();
         GetCrystalValue(_crystal);
         StopUnitMovement();
         _isMovingUp = true;
@@ -138,6 +139,7 @@ public class Harvester : UnitCommon, ICollector
 
     private void OnTriggerEnter(Collider other) 
     {
+        
         //Pokud Harvester narazi do crystalu
         if (other.gameObject.TryGetComponent<Crystal>(out _crystal) && !_isLoaded)
         {

@@ -14,8 +14,8 @@ namespace EK.Crystal
     [SerializeField] int _crystalValue;
     Transform _transform;
     private Harvester _harvester;
-    [SerializeField] ParticleSystem _spawnParticle;
-    [SerializeField] ParticleSystem _deathParticle;
+    
+    CrystalParticleSpawner _crystalParticleSpawner;
     
 
     public int CrystalValue
@@ -23,11 +23,15 @@ namespace EK.Crystal
         get { return _crystalValue; }
     }
 
+        private void Awake()
+        {
+            _crystalParticleSpawner = GetComponent<CrystalParticleSpawner>();
+        }
+
         #endregion
         private void Start()
         {
             _transform = GetComponent<Transform>();
-            _spawnParticle.Play();
 
         }
 

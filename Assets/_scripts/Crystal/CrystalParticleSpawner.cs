@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class CrystalParticleSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] ParticleSystem _spawnParticle;
+    [SerializeField] GameObject _deathParticle;
+    private CrystalSounds _crystalSounds;
+
+    private void Awake()
+    {
+        _crystalSounds = GetComponent<CrystalSounds>();
+    }
     void Start()
     {
-        
+        _spawnParticle.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.TryGetComponent<Harvester>(out Harvester harvester) && !harvester.IsLoaded)
+        {
+            _crystalSounds.PlayeCrystalCollectSound();
+            PlayCrystalDeathparticles();
+        }
     }
+
+    public void PlayCrystalDeathparticles()
+    {
+        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + 10f, transform.position.z); 
+        GameObject deathParticleInstance = Instantiate(_deathParticle, spawnPosition, Quaternion.identity);
+        Destroy(deathParticleInstance, 0.5f);
+    }
+
 }
