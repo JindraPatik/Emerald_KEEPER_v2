@@ -20,6 +20,8 @@ public class Harvester : UnitCommon, ICollector
     private float _moveUpSpeed = 2f;
     private Vector3 goalRotation;
     private Vector3 _unitCurrentPosition;
+    Harvester_Sounds _harvester_Sounds;
+
 
     public event Action OnDeliverCrysral;
     public event Action OnCrystalCollect;
@@ -49,13 +51,14 @@ public class Harvester : UnitCommon, ICollector
         _isLoaded = false;
         _isMovingUp = false;
         FlipInitialRotation();
+        _harvester_Sounds = GetComponent<Harvester_Sounds>();
     }
 
     private void OnEnable()
     {
         OnDeliverCrysral += PlayDeliveryParticles;
+        OnCrystalCollect += PlayCollectCrystalSound;
     }
-
 
     public override void Start()
     {
@@ -68,7 +71,6 @@ public class Harvester : UnitCommon, ICollector
         {
             Move(Speed);
         }
-
         else
         {
             Move(SetSpeedToZero());
@@ -78,7 +80,6 @@ public class Harvester : UnitCommon, ICollector
                     MoveUp(GetCurrent());
                     RotateOneEighty(GetCurrent());
                 }
-
         }
 
         // current je timer od 0 do 1
@@ -88,7 +89,6 @@ public class Harvester : UnitCommon, ICollector
             _isMovingUp = false;
             _current = 0;
             MoveAgain();
-            
         }
 
     }
@@ -196,7 +196,11 @@ public class Harvester : UnitCommon, ICollector
         Destroy(particleInstance, 1.5f);
     }
 
-  
+
+    private void PlayCollectCrystalSound()
+    {
+        _harvester_Sounds.PlayCollectCrystalSound();
+    }
 
     #endregion;
 

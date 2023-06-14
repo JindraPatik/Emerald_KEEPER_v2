@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -4483620224760770690}
   - component: {fileID: 2918634079100044275}
   - component: {fileID: 6363711646596500037}
+  - component: {fileID: 5262598043935360012}
   m_Layer: 0
   m_Name: Harvester_Basic_PL
   m_TagString: Untagged
@@ -260,6 +261,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5262598043935360012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77495236875070132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfeb651132e82fc45a11eacb40816680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 6363711646596500037}
+  _collectCrystalSound: {fileID: 8300000, guid: 2bae0adc8b04ee147b16515dcce6e4e6, type: 3}
 --- !u!1001 &77495235395626054
 PrefabInstance:
   m_ObjectHideFlags: 0

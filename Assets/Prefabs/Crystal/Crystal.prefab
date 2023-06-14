@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1416501396602977319}
   - component: {fileID: -5360156293299863078}
-  - component: {fileID: 6419221727077978548}
   - component: {fileID: 2021805419}
   - component: {fileID: 5011533302492388860}
   - component: {fileID: -6718626381213740325}
@@ -62,20 +61,6 @@ CapsuleCollider:
   m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 5, z: 0}
---- !u!114 &6419221727077978548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416501396602977316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb841cb17192f3a40b88fca9add069a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioSource: {fileID: -6718626381213740325}
-  _collectCrystalSound: {fileID: 8300000, guid: 2bae0adc8b04ee147b16515dcce6e4e6, type: 3}
 --- !u!114 &2021805419
 MonoBehaviour:
   m_ObjectHideFlags: 0
