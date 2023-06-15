@@ -24,7 +24,7 @@ private float _maxHealth;
 [SerializeField] TMP_Text _myHealth;
 [SerializeField] Image _myHealthBar;
 
-public Action OnPlayerDies;
+public event Action OnPlayerDies;
 public Action OnPlayerHit;
 public Action OnCrysralDelivery;
 
@@ -149,7 +149,6 @@ private void OnTriggerEnter(Collider other)
         }
     }
 
-    //pokud koliduje s jednotkou
     if (other.gameObject.TryGetComponent<Unit>(out unit))
     {
         //pokud má jednotka jinou frakci

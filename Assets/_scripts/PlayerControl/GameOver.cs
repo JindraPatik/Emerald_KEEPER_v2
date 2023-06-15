@@ -5,21 +5,25 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField] TMP_Text _winText;
     [SerializeField] TMP_Text _looseText;
-    private Player _player;
+    private Player _playerHuman;
+    private Player _playerEnemy;
 
     private void Awake()
     {
-        _player = FindAnyObjectByType<Player>();
+        _playerHuman = FindAnyObjectByType<HumanPlayer>();
+        _playerEnemy = FindAnyObjectByType<Enemy>();
     }
 
     private void OnEnable()
     {
-        _player.OnPlayerDies += ShowGameEndCondition;
+        _playerHuman.OnPlayerDies += HumanPlayerDied;
+        _playerEnemy.OnPlayerDies += EnemyPlayerDied;
     }
 
     private void OnDisable()
     {
-        _player.OnPlayerDies -= ShowGameEndCondition;
+        _playerHuman.OnPlayerDies -= HumanPlayerDied;
+        _playerEnemy.OnPlayerDies -= EnemyPlayerDied;
     }
 
     private void Start()
@@ -28,10 +32,17 @@ public class GameOver : MonoBehaviour
         _looseText.enabled = false;
     }
 
-    public void ShowGameEndCondition()
+    private void EnemyPlayerDied()
     {
-        _winText.enabled = (_player.PlayerFaction == Unit.Faction.Enemy);
-        _looseText.enabled = (_player.PlayerFaction == Unit.Faction.Player);
+        _winText.enabled = true;
+        _looseText.enabled = false;
+    }
+
+    private void HumanPlayerDied()
+    {
+        _winText.enabled = false;
+        _looseText.enabled = true;
+
     }
 
 }
