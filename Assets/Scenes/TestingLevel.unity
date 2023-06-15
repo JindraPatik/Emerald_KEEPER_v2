@@ -4521,10 +4521,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2582556927847887704, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _deliverySound
-      value: 
-      objectReference: {fileID: 8300000, guid: 2dd27bd49b6c41d4b98e13c79aa24da5, type: 3}
     - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
       propertyPath: _btnPrice
       value: 
@@ -4553,6 +4549,10 @@ PrefabInstance:
       propertyPath: _resourcesTXT
       value: 
       objectReference: {fileID: 21338567}
+    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
+      propertyPath: _resourcesValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
       propertyPath: _notEnoughResourcesText
       value: 
@@ -4699,10 +4699,6 @@ PrefabInstance:
       propertyPath: _notEnoughResourcesText
       value: 
       objectReference: {fileID: 250141522}
-    - target: {fileID: 8713216983055558066, guid: 14c900114946805458538ff66e00bfc1, type: 3}
-      propertyPath: _deliverySound
-      value: 
-      objectReference: {fileID: 8300000, guid: 8546b817b366008438f1faa2b7f3c1e0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

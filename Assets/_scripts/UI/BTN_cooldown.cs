@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class BTN_cooldown : MonoBehaviour
 {
+    private bool _isCooldown;
     [SerializeField] Image CD_image;
     [SerializeField] float _cd_Time;
-    private bool _isCooldown;
     [SerializeField] Button _button; 
 
     public bool IsCooldown
