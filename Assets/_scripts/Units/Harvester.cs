@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using EK.Crystal;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Harvester : UnitCommon, ICollector
@@ -22,28 +23,23 @@ public class Harvester : UnitCommon, ICollector
     private Vector3 _unitCurrentPosition;
     Harvester_Sounds _harvester_Sounds;
 
-
     public event Action OnDeliverCrysral;
     public event Action OnCrystalCollect;
 
     [SerializeField] AnimationCurve _curve;
     [SerializeField] GameObject _deliveryCrystalParticles;
-    
     public float CrystalValue
     {
         get { return _crystalCollected; }
     }
-    
     public bool IsLoaded
     {
         get { return _isLoaded; }
         set { _isLoaded = value; }
     }
-      
     #endregion
     
     #region InitialMethods
-
     public override void Awake() 
     {
         base.Awake();
@@ -52,14 +48,14 @@ public class Harvester : UnitCommon, ICollector
         _isMovingUp = false;
         FlipInitialRotation();
         _harvester_Sounds = GetComponent<Harvester_Sounds>();
+        
     }
-
     private void OnEnable()
     {
         OnDeliverCrysral += PlayDeliveryParticles;
         OnCrystalCollect += PlayCollectCrystalSound;
+        
     }
-
     public override void Start()
     {
         base.Start();
@@ -74,14 +70,12 @@ public class Harvester : UnitCommon, ICollector
         else
         {
             Move(SetSpeedToZero());
-                
                 if (_isMovingUp)
                 {
                     MoveUp(GetCurrent());
                     RotateOneEighty(GetCurrent());
                 }
         }
-
         // current je timer od 0 do 1
         if (_current >= _endTime)
         {
@@ -90,9 +84,7 @@ public class Harvester : UnitCommon, ICollector
             _current = 0;
             MoveAgain();
         }
-
     }
-    
    private void SetGoalRotationForFactions()
     {
         if (MyFaction == Faction.Player)
@@ -104,13 +96,9 @@ public class Harvester : UnitCommon, ICollector
             goalRotation = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
         }
     }
-
-
     #endregion
 
     #region Interface Methods
-
-    //souhrna metoda na sber
     public void Collect()
     {
         _isLoaded = true;
@@ -121,31 +109,28 @@ public class Harvester : UnitCommon, ICollector
         Speed = MoveDirectionSwitch();
         _crystal.Die();
     }
-
     #endregion
   
     #region Methods
-   
     public bool unLoad()
     {
         _isLoaded = false;
         return _isLoaded;
     }
-
     public void GetCrystalValue(Crystal crystal)
     {
         _crystalCollected = crystal.CrystalValue;
     }
-
     private void OnTriggerEnter(Collider other) 
     {
-        
         //Pokud Harvester narazi do crystalu
         if (other.gameObject.TryGetComponent<Crystal>(out _crystal) && !_isLoaded)
         {
+            var crystalParticle = _crystal.GetComponent<CrystalParticleSpawner>();
+            OnCrystalCollect += crystalParticle.PlayCrystalDeathparticles;
             Collect();
+            OnCrystalCollect -= crystalParticle.PlayCrystalDeathparticles;
         }
-        
         //pokud je harvester nalozeny a narazi do hrace
         if (other.gameObject.TryGetComponent<Player>(out _player) && _isLoaded)
         {
@@ -161,22 +146,18 @@ public class Harvester : UnitCommon, ICollector
         {
             UnitContact(other);
         }
-        
     }
-
     // Timer
     private float GetCurrent()
     {
         return Mathf.MoveTowards(_current, _endTime, _moveUpSpeed * Time.deltaTime);
     }
-
     //  Otoci harvestera kolem osy
     private void RotateOneEighty(float current)
     {
         _current = current;
         transform.rotation = Quaternion.Lerp( Quaternion.identity, Quaternion.Euler(goalRotation), _curve.Evaluate(_current));
     }
-
     //vyjede s harvesterem nahoru
     private void MoveUp(float current)
     {
@@ -187,7 +168,6 @@ public class Harvester : UnitCommon, ICollector
     #endregion
 
     #region Effects
-
     private void PlayDeliveryParticles()
     {
         Vector3 _deliveryParticlesSpawnPoint = new Vector3(_unitCurrentPosition.x, _unitCurrentPosition.y + 30, _unitCurrentPosition.z);
@@ -195,13 +175,10 @@ public class Harvester : UnitCommon, ICollector
         particleInstance = Instantiate(_deliveryCrystalParticles, _deliveryParticlesSpawnPoint, Quaternion.identity);
         Destroy(particleInstance, 1.5f);
     }
-
-
     private void PlayCollectCrystalSound()
     {
         _harvester_Sounds.PlayCollectCrystalSound();
     }
-
     #endregion;
 
 }

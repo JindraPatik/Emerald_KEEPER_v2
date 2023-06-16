@@ -122,20 +122,17 @@ private bool bIsReadyToAction = true;
         {
             bIsPressed = true;
         }
-        
         if(Input.GetKeyUp(key))
         {
             bIsPressed = false;
             bIsReadyToAction = true;
         }
-
         if(bIsPressed && bIsReadyToAction)
         {
             action.Invoke();
             bIsReadyToAction = false;
         }
     }    
-
 private void OnTriggerEnter(Collider other) 
 {
     // pokud koliduje s harvesterem, přičti crystal
@@ -161,7 +158,6 @@ private void OnTriggerEnter(Collider other)
                 PlayerDeathCondition();
             }
         }
-
 }
 private void PlayerDeathCondition()
     {
@@ -170,7 +166,6 @@ private void PlayerDeathCondition()
             OnPlayerDies?.Invoke();
         }
     }
-
 public void Die()
     {
         IsDead = true;

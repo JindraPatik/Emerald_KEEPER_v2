@@ -15,18 +15,15 @@ public class KeyboardCooldown : MonoBehaviour
         get { return _keyboardInputEnabled; }
         set { _keyboardInputEnabled = value; }
     }
-
     public float KeyboardCDTime
     {
         get { return _keyboardCDTime; }
     }
-
     public bool IsCooldown
     { 
         get { return _isCooldown; } 
         set { _isCooldown = value;}
     }
-
     private void Update()
     {
         if (_isCooldown) 
@@ -40,7 +37,6 @@ public class KeyboardCooldown : MonoBehaviour
         _keyboardInputEnabled = false;
         _currentCDTime = 0f;
     }
-
     private void KeyboardCooldownActive()
     {
         _currentCDTime += 1 / _keyboardCDTime * Time.deltaTime;
@@ -51,7 +47,6 @@ public class KeyboardCooldown : MonoBehaviour
             _keyboardInputEnabled = true;
         }
     }
-
     public void CooldownEnable() => _isCooldown = true;
     public void CooldownDisable() => _isCooldown = false;
 }

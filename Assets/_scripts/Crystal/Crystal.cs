@@ -14,35 +14,26 @@ namespace EK.Crystal
     [SerializeField] int _crystalValue;
     Transform _transform;
     private Harvester _harvester;
-    
     CrystalParticleSpawner _crystalParticleSpawner;
-    
 
     public int CrystalValue
     {
         get { return _crystalValue; }
     }
-
         private void Awake()
         {
             _crystalParticleSpawner = GetComponent<CrystalParticleSpawner>();
         }
-
         #endregion
         private void Start()
         {
             _transform = GetComponent<Transform>();
-
         }
-
         #region Methods
-
-        //Destroy me
         public void Die()
     {
         Destroy(gameObject);
     }
-
     #endregion
 }
 
