@@ -7,16 +7,20 @@ public class BTN_cooldown : MonoBehaviour
 {
     private bool _isCooldown;
     [SerializeField] Image CD_image;
-    [SerializeField] float _cd_Time;
+    private float _cd_Time;
     [SerializeField] Button _button; 
+    private KeyboardCooldown _keyboardCooldown;
 
     public bool IsCooldown
     {
         get { return _isCooldown; }
         set { _isCooldown = value;}
     }
-
-
+    private void Start()
+    {
+        _keyboardCooldown = HumanPlayer.HumanPlayerInstance.GetComponent<KeyboardCooldown>();
+        _cd_Time = _keyboardCooldown.KeyboardCDTime;
+    }
     private void Update() 
     {
         if (_isCooldown)
@@ -24,7 +28,6 @@ public class BTN_cooldown : MonoBehaviour
             ButtonCooldownActive();
         }
     }
-
     private void ButtonCooldownActive()
     {
         CD_image.fillAmount += 1 / _cd_Time * Time.deltaTime;

@@ -11,6 +11,7 @@ public class HumanPlayer : Player
     [SerializeField] GameObject _buttonObject;
     [SerializeField] TMP_Text _btnPrice, _btnStrenght;
     private Unit _myUnit;
+    public static HumanPlayer HumanPlayerInstance;
 
 
     public override void Awake() 
@@ -22,6 +23,8 @@ public class HumanPlayer : Player
         _myUnit = Prefabs[_unitIndex].GetComponent<Unit>();
         _btnPrice.text = ((int)_myUnit.Price).ToString();
         _btnStrenght.text = ((int)_myUnit.Strenght).ToString();
+        HumanPlayerInstance = this;
+
 
     }
 
