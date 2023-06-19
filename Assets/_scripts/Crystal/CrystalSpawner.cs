@@ -14,6 +14,7 @@ public class CrystalSpawner : MonoBehaviour
     [SerializeField] float minCrystalSize;
     [SerializeField] float maxCrystalSize;
     private Player _player;
+    GameManager _gameManager;
 
 
     public static CrystalSpawner Instance
@@ -38,6 +39,7 @@ public class CrystalSpawner : MonoBehaviour
             }
 
             _instance = this;
+
         }
 
     private void OnEnable() 
@@ -49,8 +51,6 @@ public class CrystalSpawner : MonoBehaviour
     private void Start() 
         {
             StartCoroutine (SpawnCrystalInRandomRange());
-
-            // SpawnCrystalInRandomInterval();
         }
 
 
@@ -82,25 +82,29 @@ public class CrystalSpawner : MonoBehaviour
         return new Vector3 (randomScale, randomScale, randomScale);
     }
 
-    private IEnumerator SpawnCrystalInRandomRange()
-        {
-            while (CrystalSpawningEnabled)
-            {
-                float spawnIntervalTime = UnityEngine.Random.Range(_spawnIntervalBetween[0], _spawnIntervalBetween[1]);
-                yield return new WaitForSeconds(spawnIntervalTime);
+    //private IEnumerator SpawnCrystalInRandomRange()
+    //    {
+            
+    //    while (GameManager.gameis)
+    //        {
+    //            float spawnIntervalTime = UnityEngine.Random.Range(_spawnIntervalBetween[0], _spawnIntervalBetween[1]);
+    //            yield return new WaitUntil => (() !gameIsPaused);
+    //            yield return new WaitForSeconds(spawnIntervalTime);
 
-                if (CrystalSpawningEnabled)
-                {
-                    SpawnCrystals();
-                }
-            }
-        }
-   
+    //            if (CrystalSpawningEnabled)
+    //            {
+    //                SpawnCrystals();
+    //            }
+    //        }
+    //    }
+
+       
     private void OnDisable() 
     {
         _crystalSpawningEnabled = false;
         _player.OnPlayerDies -= StopAllCoroutines;
         StopAllCoroutines();
     }
+    
 
 }

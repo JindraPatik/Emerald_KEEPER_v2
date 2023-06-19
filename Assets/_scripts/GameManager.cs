@@ -10,10 +10,29 @@ public class GameManager : MonoBehaviour
     #region Variables
     [SerializeField] Canvas InGamemenuCanvas;
     private bool _menuIsActive;
+    private CrystalSpawner _crystalSpawner;
+    private bool _gameIsPaused;
+    GameManager _instance;
+
+    public static GameManager Instance => _instance; // nenenenene
+   
+
+    public bool GameIsPaused
+    {
+        get { return _gameIsPaused; }
+        set { _gameIsPaused = value; }
+    }
     #endregion
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        _instance = this;
+
         HidePauseGameMenu();
     }
 
@@ -32,12 +51,14 @@ public class GameManager : MonoBehaviour
     private void UnpauseGame()
     {
         HidePauseGameMenu();
+        _gameIsPaused = false;
     }
 
     #region Methods
     public void PauseGame()
     {
         ShowPauseGameMenu();
+        _gameIsPaused = true;
     }
 
     private void ShowPauseGameMenu()

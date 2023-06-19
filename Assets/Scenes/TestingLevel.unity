@@ -3391,6 +3391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747c5e66ecffc36469f7baf0756103f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InGamemenuCanvas: {fileID: 752618351}
 --- !u!114 &1151803684
 MonoBehaviour:
   m_ObjectHideFlags: 0
