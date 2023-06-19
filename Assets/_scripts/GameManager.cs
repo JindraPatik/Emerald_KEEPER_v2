@@ -12,10 +12,8 @@ public class GameManager : MonoBehaviour
     private bool _menuIsActive;
     private CrystalSpawner _crystalSpawner;
     private bool _gameIsPaused;
-    GameManager _instance;
-
-    public static GameManager Instance => _instance; // nenenenene
-   
+    private static GameManager _instance;
+    public static GameManager Instance => _instance;
 
     public bool GameIsPaused
     {

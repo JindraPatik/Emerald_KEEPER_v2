@@ -82,23 +82,22 @@ public class CrystalSpawner : MonoBehaviour
         return new Vector3 (randomScale, randomScale, randomScale);
     }
 
-    //private IEnumerator SpawnCrystalInRandomRange()
-    //    {
-            
-    //    while (GameManager.gameis)
-    //        {
-    //            float spawnIntervalTime = UnityEngine.Random.Range(_spawnIntervalBetween[0], _spawnIntervalBetween[1]);
-    //            yield return new WaitUntil => (() !gameIsPaused);
-    //            yield return new WaitForSeconds(spawnIntervalTime);
+    private IEnumerator SpawnCrystalInRandomRange()
+    {
 
-    //            if (CrystalSpawningEnabled)
-    //            {
-    //                SpawnCrystals();
-    //            }
-    //        }
-    //    }
+        while (!GameManager.Instance.GameIsPaused)
+        {
+            float spawnIntervalTime = UnityEngine.Random.Range(_spawnIntervalBetween[0], _spawnIntervalBetween[1]);
 
-       
+            if (CrystalSpawningEnabled)
+            {
+                SpawnCrystals();
+            }
+            yield return new WaitForSeconds(spawnIntervalTime);
+        }
+    }
+
+
     private void OnDisable() 
     {
         _crystalSpawningEnabled = false;
