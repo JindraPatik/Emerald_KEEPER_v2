@@ -27,6 +27,19 @@ public class UnitCommon : Unit, IDeath
         _myCollider = GetComponent<Collider>();
     }
 
+    public virtual void OnEnable()
+    {
+        GameManager.Instance.OnPauseGame += StopUnitMovement;
+        GameManager.Instance.OnResumeGame += MoveAgain;
+    }
+
+    public virtual void OnDisable()
+    {
+        GameManager.Instance.OnPauseGame -= StopUnitMovement;
+        GameManager.Instance.OnResumeGame -= MoveAgain;
+    }
+
+
     public virtual void Start()
     {
         _myTransform = transform;

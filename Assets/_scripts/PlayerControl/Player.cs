@@ -62,8 +62,11 @@ void FixedUpdate()
     {
         if(!IsDead)
         {
-            _resourcesTXT.text = ((int)ResourcesValue).ToString();
-            ResourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime;
+            if (!GameManager.Instance.GameIsPaused)
+            {
+                _resourcesTXT.text = ((int)ResourcesValue).ToString();
+                ResourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime; 
+            }
         }
     }
 
@@ -81,7 +84,7 @@ private void PayforUnit(float price)
 
 public void DeployUnit(int unitIndex)
 {
-    if(!IsDead && HasEnoughResources(ResourcesValue))
+    if(!IsDead && HasEnoughResources(ResourcesValue) && !GameManager.Instance.GameIsPaused)
     {
         PayforUnit(_unit.Price);
         SpawnUnit(unitIndex);

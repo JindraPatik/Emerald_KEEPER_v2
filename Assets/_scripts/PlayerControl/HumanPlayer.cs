@@ -36,7 +36,7 @@ public class HumanPlayer : Player
     
     void Update()
     {
-        if(!_btnCooldown.IsCooldown)
+        if(!_btnCooldown.IsCooldown && !GameManager.Instance.GameIsPaused)
             {
                 if (Input.GetKeyDown(KeyCode.Z))
                     {

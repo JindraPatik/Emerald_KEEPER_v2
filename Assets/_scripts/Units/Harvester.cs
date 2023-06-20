@@ -50,11 +50,15 @@ public class Harvester : UnitCommon, ICollector
         _harvester_Sounds = GetComponent<Harvester_Sounds>();
         
     }
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         OnDeliverCrysral += PlayDeliveryParticles;
         OnCrystalCollect += PlayCollectCrystalSound;
-        
+    }
+    public override void OnDisable()
+    {
+        base.OnDisable();
     }
     public override void Start()
     {

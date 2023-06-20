@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private bool _gameIsPaused;
     private static GameManager _instance;
     public static GameManager Instance => _instance;
+    public event Action OnPauseGame;
+    public event Action OnResumeGame;
 
     public bool GameIsPaused
     {
@@ -49,11 +51,13 @@ public class GameManager : MonoBehaviour
     #region Methods
     private void UnpauseGame()
     {
+        OnResumeGame?.Invoke();
         HidePauseGameMenu();
         _gameIsPaused = false;
     }
     public void PauseGame()
     {
+        OnPauseGame?.Invoke();
         ShowPauseGameMenu();
         _gameIsPaused = true;
     }

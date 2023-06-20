@@ -16,13 +16,16 @@ public class Enemy : Player
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (!GameManager.Instance.GameIsPaused)
         {
-            if (_keyboardCooldown.IsKeyboardInputEnabled)
+            if (Input.GetKeyDown(KeyCode.Keypad1))
             {
-                DeployUnit(_unitIndex);
-                _keyboardCooldown.StartCooldown(); 
-            }
+                if (_keyboardCooldown.IsKeyboardInputEnabled)
+                {
+                    DeployUnit(_unitIndex);
+                    _keyboardCooldown.StartCooldown();
+                }
+            } 
         }
     }
 }

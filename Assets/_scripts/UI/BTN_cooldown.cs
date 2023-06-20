@@ -23,7 +23,7 @@ public class BTN_cooldown : MonoBehaviour
     }
     private void Update() 
     {
-        if (_isCooldown)
+        if (_isCooldown && !GameManager.Instance.GameIsPaused)
         {
             ButtonCooldownActive();
         }

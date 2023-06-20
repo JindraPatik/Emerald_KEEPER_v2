@@ -20,7 +20,10 @@ public class BTN_click : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        ButtonPressed();
+        if (!GameManager.Instance.GameIsPaused)
+        {
+            ButtonPressed(); 
+        }
     }
 
 
