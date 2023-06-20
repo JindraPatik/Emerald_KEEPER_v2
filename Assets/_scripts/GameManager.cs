@@ -46,19 +46,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region Methods
     private void UnpauseGame()
     {
         HidePauseGameMenu();
         _gameIsPaused = false;
     }
-
-    #region Methods
     public void PauseGame()
     {
         ShowPauseGameMenu();
         _gameIsPaused = true;
     }
-
     private void ShowPauseGameMenu()
     {
         InGamemenuCanvas.gameObject.SetActive(true);

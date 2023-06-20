@@ -84,12 +84,12 @@ public class CrystalSpawner : MonoBehaviour
 
     private IEnumerator SpawnCrystalInRandomRange()
     {
-
-        while (!GameManager.Instance.GameIsPaused)
+        
+        while (CrystalSpawningEnabled)
         {
             float spawnIntervalTime = UnityEngine.Random.Range(_spawnIntervalBetween[0], _spawnIntervalBetween[1]);
 
-            if (CrystalSpawningEnabled)
+            if (!GameManager.Instance.GameIsPaused)
             {
                 SpawnCrystals();
             }
