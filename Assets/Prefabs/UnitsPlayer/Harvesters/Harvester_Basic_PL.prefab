@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033e48dbf46f2f0408426f82a7b024ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 25
+  _speed: 30
   _strenght: 2
   _spawnpoint: {fileID: 1690699897206724365, guid: 595cc6d03d1ad254f996c4648f7ad759, type: 3}
   _myFaction: 0
