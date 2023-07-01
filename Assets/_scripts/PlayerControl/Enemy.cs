@@ -22,10 +22,32 @@ public class Enemy : Player
             {
                 if (_keyboardCooldown.IsKeyboardInputEnabled)
                 {
-                    DeployUnit(UnitIndex);
-                    _keyboardCooldown.StartCooldown();
+                    SendUnit(0);
                 }
-            } 
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                if (_keyboardCooldown.IsKeyboardInputEnabled)
+                {
+                    SendUnit(1);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                if (_keyboardCooldown.IsKeyboardInputEnabled)
+                {
+                    SendUnit(2);
+                }
+            }
+
         }
+    }
+
+    private void SendUnit(int unitindex)
+    {
+        DeployUnit(unitindex);
+        _keyboardCooldown.StartCooldown();
     }
 }

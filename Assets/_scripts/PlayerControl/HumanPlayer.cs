@@ -49,17 +49,13 @@ public class HumanPlayer : Player
     
     public void Update()
     {
-        if(_btnCooldown.IsCooldown != null && !_btnCooldown.IsCooldown && !GameManager.Instance.GameIsPaused)
+        if(!_btnCooldown.IsCooldown && !GameManager.Instance.GameIsPaused)
             {
             if (_keyboardCooldown.IsKeyboardInputEnabled)
             {
                 if (Input.GetKeyDown(KeyCode.Z))
                 {
-                    Debug.Log("Z zmackle");
-                    DeployUnit(0);
-                    _keyboardCooldown.StartCooldown();
-                    _btnClick.ButtonPressed();
-                    _btnCooldown.CooldownEnable();
+                    SendUnit(0);
                 }
                 else if (Input.GetKeyUp(KeyCode.Z))
                 {
@@ -68,17 +64,32 @@ public class HumanPlayer : Player
 
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    DeployUnit(1);
-                    _keyboardCooldown.StartCooldown();
-                    _btnClick.ButtonPressed();
-                    _btnCooldown.CooldownEnable();
+                    SendUnit(1);
                 }
                 else if (Input.GetKeyUp(KeyCode.X))
                 {
                     _btnClick.ButtonUnpressed();
-                } 
+                }
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    SendUnit(2);
+                }
+                else if (Input.GetKeyUp(KeyCode.C))
+                {
+                    _btnClick.ButtonUnpressed();
+                }
+
+
             }
 
         }
+    }
+
+    private void SendUnit(int unitindex)
+    {
+        DeployUnit(unitindex);
+        _keyboardCooldown.StartCooldown();
+        _btnClick.ButtonPressed();
+        _btnCooldown.CooldownEnable();
     }
 }
