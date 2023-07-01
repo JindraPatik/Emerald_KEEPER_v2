@@ -11,8 +11,8 @@ public class Player : PlayerController, IDeath
 #region Variables
 
 private Unit _unit;
-[SerializeField] Transform _spawnPoint;
-public int _unitIndex;
+private Transform _spawnPoint;
+public int UnitIndex;
 private bool _hasEnoughResources; 
 private Harvester harvester;
 private Unit unit;
@@ -37,7 +37,7 @@ public Unit.Faction PlayerFaction
 
 public virtual void Awake() 
 {
-    _unit = Prefabs[_unitIndex].GetComponent<Unit>();
+    _unit = Prefabs[UnitIndex].GetComponent<Unit>();
     _maxHealth = Health;
     _spawnPoint = _unit.SpawnPoint;
     IsDead = false;

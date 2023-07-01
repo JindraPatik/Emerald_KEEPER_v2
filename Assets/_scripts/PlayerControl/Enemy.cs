@@ -22,7 +22,7 @@ public class Enemy : Player
             {
                 if (_keyboardCooldown.IsKeyboardInputEnabled)
                 {
-                    DeployUnit(_unitIndex);
+                    DeployUnit(UnitIndex);
                     _keyboardCooldown.StartCooldown();
                 }
             } 

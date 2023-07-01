@@ -15,8 +15,6 @@ public abstract class Unit : MonoBehaviour
 
     #endregion
 
-
-
     #region Variable properities
 
     public Faction MyFaction

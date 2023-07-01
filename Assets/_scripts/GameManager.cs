@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
     #region Variables
     [SerializeField] Canvas InGamemenuCanvas;
     private bool _menuIsActive;
-    private CrystalSpawner _crystalSpawner;
     private bool _gameIsPaused;
+    private CrystalSpawner _crystalSpawner;
     private static GameManager _instance;
     public static GameManager Instance => _instance;
+
     public event Action OnPauseGame;
     public event Action OnResumeGame;
 
