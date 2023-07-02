@@ -75,7 +75,8 @@ private void LateUpdate()
     _myHealth.text = (((int)Health).ToString());
 }
 
-public bool HasEnoughResources(float resourcesValue) => _hasEnoughResources = resourcesValue >= _unit.Price ? true : false;
+public bool HasEnoughResources(float resourcesValue, Unit unitIndexed) => _hasEnoughResources = resourcesValue >= unitIndexed.Price ? true : false;
+
 
 private void PayforUnit(float price)
 {
@@ -84,7 +85,9 @@ private void PayforUnit(float price)
 
 public void DeployUnit(int unitIndex)
 {
-    if(!IsDead && HasEnoughResources(ResourcesValue) && !GameManager.Instance.GameIsPaused)
+    _unit = Prefabs[unitIndex].GetComponent<Unit>();
+
+    if(!IsDead && HasEnoughResources(ResourcesValue, _unit) && !GameManager.Instance.GameIsPaused)
     {
         PayforUnit(_unit.Price);
         SpawnUnit(unitIndex);
