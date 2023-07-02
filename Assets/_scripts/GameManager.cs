@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        GameIsPaused = true;
+
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);

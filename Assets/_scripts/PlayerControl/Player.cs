@@ -39,7 +39,6 @@ public virtual void Awake()
 {
     _unit = Prefabs[_unitIndex].GetComponent<Unit>();
     _maxHealth = Health;
-    //_spawnPoint = _unit.SpawnPoint;
     IsDead = false;
 }
 private void OnEnable() 
