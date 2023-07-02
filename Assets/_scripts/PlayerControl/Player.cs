@@ -39,7 +39,7 @@ public virtual void Awake()
 {
     _unit = Prefabs[_unitIndex].GetComponent<Unit>();
     _maxHealth = Health;
-    _spawnPoint = _unit.SpawnPoint;
+    //_spawnPoint = _unit.SpawnPoint;
     IsDead = false;
 }
 private void OnEnable() 
@@ -86,6 +86,7 @@ private void PayforUnit(float price)
 public void DeployUnit(int unitIndex)
 {
     _unit = Prefabs[unitIndex].GetComponent<Unit>();
+    _spawnPoint = _unit.SpawnPoint;
 
     if(!IsDead && HasEnoughResources(ResourcesValue, _unit) && !GameManager.Instance.GameIsPaused)
     {
@@ -115,7 +116,7 @@ private void UpdateHealthBar(float maxHealth, float health)
 
 public override void SpawnUnit(int unitIndex)
     {
-        Vector3 spawn = new Vector3 (_spawnPoint.transform.position.x, _spawnPoint.transform.position.y, 0f);
+        Vector3 spawn = new Vector3 (_spawnPoint.transform.position.x, _spawnPoint.transform.position.y, _spawnPoint.transform.position.z);
         Instantiate(Prefabs[unitIndex], spawn, Quaternion.identity);
     }
 

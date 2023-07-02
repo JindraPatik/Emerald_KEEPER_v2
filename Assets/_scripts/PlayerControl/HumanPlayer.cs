@@ -73,7 +73,7 @@ public class HumanPlayer : Player
                 {
                     _btnClick = _buttonObjects[1].GetComponent<BTN_click>();
                     _btnClick.ButtonUnpressed();
-            }
+                }
                 if (Input.GetKeyDown(KeyCode.C))
                 {
                     Debug.Log("C");
@@ -84,6 +84,16 @@ public class HumanPlayer : Player
                     _btnClick = _buttonObjects[2].GetComponent<BTN_click>();
                     _btnClick.ButtonUnpressed();
                 }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Debug.Log("C");
+                SendUnit(3);
+            }
+            else if (Input.GetKeyUp(KeyCode.A))
+            {
+                _btnClick = _buttonObjects[3].GetComponent<BTN_click>();
+                _btnClick.ButtonUnpressed();
+            }
 
         }
     }
