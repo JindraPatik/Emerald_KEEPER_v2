@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 49776249}
   - component: {fileID: 49776248}
   m_Layer: 5
-  m_Name: DeployBTN_001 (3)
+  m_Name: DeployBTN_004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 52720841}
   - component: {fileID: 52720840}
   m_Layer: 5
-  m_Name: DeployBTN_001 (5)
+  m_Name: DeployBTN_006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2791,7 +2791,7 @@ GameObject:
   - component: {fileID: 674493341}
   - component: {fileID: 674493340}
   m_Layer: 5
-  m_Name: DeployBTN_001 (6)
+  m_Name: DeployBTN_007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3475,7 +3475,7 @@ GameObject:
   - component: {fileID: 722108913}
   - component: {fileID: 722108912}
   m_Layer: 5
-  m_Name: DeployBTN_001 (2)
+  m_Name: DeployBTN_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6597,7 +6597,7 @@ GameObject:
   - component: {fileID: 1388606137}
   - component: {fileID: 1388606136}
   m_Layer: 5
-  m_Name: DeployBTN_001 (1)
+  m_Name: DeployBTN_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7006,7 +7006,7 @@ GameObject:
   - component: {fileID: 1486864634}
   - component: {fileID: 1486864633}
   m_Layer: 5
-  m_Name: DeployBTN_001 (4)
+  m_Name: DeployBTN_005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

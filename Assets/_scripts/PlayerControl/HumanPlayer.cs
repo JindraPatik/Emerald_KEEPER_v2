@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HumanPlayer : Player
@@ -51,45 +52,53 @@ public class HumanPlayer : Player
     {
         if(!_btnCooldown.IsCooldown && !GameManager.Instance.GameIsPaused)
             {
-            if (_keyboardCooldown.IsKeyboardInputEnabled)
-            {
+            
                 if (Input.GetKeyDown(KeyCode.Z))
                 {
+                    Debug.Log("Z");
                     SendUnit(0);
                 }
                 else if (Input.GetKeyUp(KeyCode.Z))
                 {
+                    _btnClick = _buttonObjects[0].GetComponent<BTN_click>();
                     _btnClick.ButtonUnpressed();
                 }
 
                 if (Input.GetKeyDown(KeyCode.X))
                 {
+                    Debug.Log("X");
                     SendUnit(1);
                 }
                 else if (Input.GetKeyUp(KeyCode.X))
                 {
+                    _btnClick = _buttonObjects[1].GetComponent<BTN_click>();
                     _btnClick.ButtonUnpressed();
-                }
+            }
                 if (Input.GetKeyDown(KeyCode.C))
                 {
+                    Debug.Log("C");
                     SendUnit(2);
                 }
                 else if (Input.GetKeyUp(KeyCode.C))
                 {
+                    _btnClick = _buttonObjects[2].GetComponent<BTN_click>();
                     _btnClick.ButtonUnpressed();
                 }
-
-
-            }
 
         }
     }
 
     private void SendUnit(int unitindex)
     {
-        DeployUnit(unitindex);
-        _keyboardCooldown.StartCooldown();
-        _btnClick.ButtonPressed();
-        _btnCooldown.CooldownEnable();
+        if (_keyboardCooldown.IsKeyboardInputEnabled)
+        {
+            DeployUnit(unitindex);
+            _keyboardCooldown.StartCooldown();
+            _btnClick = _buttonObjects[unitindex].GetComponent<BTN_click>();
+            _btnClick.ButtonPressed();
+
+            _btnCooldown = _buttonObjects[unitindex].GetComponent<BTN_cooldown>();
+            _btnCooldown.CooldownEnable();
+        }
     }
 }

@@ -12,7 +12,7 @@ public class Player : PlayerController, IDeath
 
 private Unit _unit;
 private Transform _spawnPoint;
-public int UnitIndex;
+private int _unitIndex;
 private bool _hasEnoughResources; 
 private Harvester harvester;
 private Unit unit;
@@ -37,7 +37,7 @@ public Unit.Faction PlayerFaction
 
 public virtual void Awake() 
 {
-    _unit = Prefabs[UnitIndex].GetComponent<Unit>();
+    _unit = Prefabs[_unitIndex].GetComponent<Unit>();
     _maxHealth = Health;
     _spawnPoint = _unit.SpawnPoint;
     IsDead = false;
