@@ -11,6 +11,8 @@ public class HumanPlayer : Player
     KeyboardCooldown _keyboardCooldown;
     [SerializeField] GameObject[] _buttonObjects;
     [SerializeField] List<TMP_Text> _btnPrices, _btnStrenghts;
+    [SerializeField] GameObject _rocket;
+    private HomingMissile _hoomingMissile;
     private Unit _myUnit;
     public static HumanPlayer HumanPlayerInstance;
 
@@ -20,6 +22,7 @@ public class HumanPlayer : Player
         base.Awake();
         HumanPlayerInstance = this;
         _keyboardCooldown = GetComponent<KeyboardCooldown>();
+        _hoomingMissile = _rocket.GetComponent<HomingMissile>();
         _keyboardCooldown.CooldownDisable();
 
 
@@ -55,7 +58,6 @@ public class HumanPlayer : Player
             
                 if (Input.GetKeyDown(KeyCode.Z))
                 {
-                    Debug.Log("Z");
                     SendUnit(0);
                 }
                 else if (Input.GetKeyUp(KeyCode.Z))
@@ -66,7 +68,6 @@ public class HumanPlayer : Player
 
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    Debug.Log("X");
                     SendUnit(1);
                 }
                 else if (Input.GetKeyUp(KeyCode.X))
@@ -76,7 +77,6 @@ public class HumanPlayer : Player
                 }
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    Debug.Log("C");
                     SendUnit(2);
                 }
                 else if (Input.GetKeyUp(KeyCode.C))
@@ -84,16 +84,26 @@ public class HumanPlayer : Player
                     _btnClick = _buttonObjects[2].GetComponent<BTN_click>();
                     _btnClick.ButtonUnpressed();
                 }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Debug.Log("C");
-                SendUnit(3);
-            }
-            else if (Input.GetKeyUp(KeyCode.A))
-            {
-                _btnClick = _buttonObjects[3].GetComponent<BTN_click>();
-                _btnClick.ButtonUnpressed();
-            }
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    SendUnit(3);
+                }
+                else if (Input.GetKeyUp(KeyCode.A))
+                {
+                    _btnClick = _buttonObjects[3].GetComponent<BTN_click>();
+                    _btnClick.ButtonUnpressed();
+                }
+                
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    _hoomingMissile.LaunchRocket();
+                }
+                else if (Input.GetKeyUp(KeyCode.Space))
+                {
+                    //_btnClick = _buttonObjects[6].GetComponent<BTN_click>();
+                    //_btnClick.ButtonUnpressed();
+                }
+
 
         }
     }
