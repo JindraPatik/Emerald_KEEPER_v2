@@ -9,11 +9,12 @@ public class HumanPlayer : Player
     private BTN_click _btnClick;
     private BTN_cooldown _btnCooldown;
     KeyboardCooldown _keyboardCooldown;
-    [SerializeField] List<GameObject> _buttonObjects;
+    [SerializeField] GameObject[] _buttonObjects;
     [SerializeField] List<TMP_Text> _btnPrices, _btnStrenghts;
+    [SerializeField] GameObject _rocket;
+    private HomingMissile _hoomingMissile;
     private Unit _myUnit;
     public static HumanPlayer HumanPlayerInstance;
-    
 
 
     public override void Awake() 
@@ -21,10 +22,11 @@ public class HumanPlayer : Player
         base.Awake();
         HumanPlayerInstance = this;
         _keyboardCooldown = GetComponent<KeyboardCooldown>();
+        _hoomingMissile = _rocket.GetComponent<HomingMissile>();
         _keyboardCooldown.CooldownDisable();
 
 
-        for (int i = 0; i < _buttonObjects.Count; i++)
+        for (int i = 0; i < _buttonObjects.Length; i++)
         {
             GameObject buttonObject = _buttonObjects[i];
             TMP_Text btnPrice = _btnPrices[i];
@@ -51,14 +53,11 @@ public class HumanPlayer : Player
     
     public void Update()
     {
-        Debug.Log("my faction: " + PlayerFaction + "enemy targets count: " + Player.PlayerInstance.FlyAttackersTargets.Count);
-
         if(!_btnCooldown.IsCooldown && !GameManager.Instance.GameIsPaused)
             {
             
                 if (Input.GetKeyDown(KeyCode.Z))
                 {
-                    Debug.Log("Z");
                     SendUnit(0);
                 }
                 else if (Input.GetKeyUp(KeyCode.Z))
@@ -69,7 +68,6 @@ public class HumanPlayer : Player
 
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    Debug.Log("X");
                     SendUnit(1);
                 }
                 else if (Input.GetKeyUp(KeyCode.X))
@@ -79,7 +77,6 @@ public class HumanPlayer : Player
                 }
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    Debug.Log("C");
                     SendUnit(2);
                 }
                 else if (Input.GetKeyUp(KeyCode.C))
@@ -87,9 +84,6 @@ public class HumanPlayer : Player
                     _btnClick = _buttonObjects[2].GetComponent<BTN_click>();
                     _btnClick.ButtonUnpressed();
                 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 if (Input.GetKeyDown(KeyCode.A))
                 {
                     SendUnit(3);
@@ -102,37 +96,14 @@ public class HumanPlayer : Player
                 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    //_btnClick = _buttonObjects[4].GetComponent<BTN_click>();
                     _hoomingMissile.LaunchRocket();
                 }
                 else if (Input.GetKeyUp(KeyCode.Space))
                 {
-                    //_btnClick = _buttonObjects[4].GetComponent<BTN_click>();
+                    //_btnClick = _buttonObjects[6].GetComponent<BTN_click>();
                     //_btnClick.ButtonUnpressed();
-            }
+                }
 
-=======
-=======
->>>>>>> parent of 118f54e (Raketka letí nahoru)
-=======
->>>>>>> parent of 118f54e (Raketka letí nahoru)
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Debug.Log("C");
-                SendUnit(3);
-            }
-            else if (Input.GetKeyUp(KeyCode.A))
-            {
-                _btnClick = _buttonObjects[3].GetComponent<BTN_click>();
-                _btnClick.ButtonUnpressed();
-            }
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 118f54e (Raketka letí nahoru)
-=======
->>>>>>> parent of 118f54e (Raketka letí nahoru)
-=======
->>>>>>> parent of 118f54e (Raketka letí nahoru)
 
         }
     }
@@ -150,6 +121,4 @@ public class HumanPlayer : Player
             _btnCooldown.CooldownEnable();
         }
     }
-
-    
 }

@@ -238,8 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e139d4a85cb24b44a7cdf86563f3bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 18
-  _strenght: 10
+  _speed: 45
+  _strenght: 5
   _spawnpoint: {fileID: 4775277778768898017, guid: 5ffd41b721dd01d42a0da40feedbc737, type: 3}
   _myFaction: 1
   _price: 10

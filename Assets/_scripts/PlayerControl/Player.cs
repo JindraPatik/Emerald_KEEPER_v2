@@ -16,11 +16,7 @@ private int _unitIndex;
 private bool _hasEnoughResources; 
 private Harvester harvester;
 private Unit unit;
-private UnitCommon _unitCommon;
 private float _maxHealth;
-public GameObject DeployedUnit;
-public List<UnitCommon> FlyAttackersTargets = new List<UnitCommon>();
-public static Player PlayerInstance;
 
 [SerializeField] Unit.Faction _playerFaction;
 [SerializeField] TMP_Text _resourcesTXT;
@@ -32,7 +28,6 @@ public event Action OnPlayerDies;
 public Action OnPlayerHit;
 public Action OnCrysralDelivery;
 
-
 public Unit.Faction PlayerFaction
 {
     get { return _playerFaction; }
@@ -43,10 +38,8 @@ public Unit.Faction PlayerFaction
 public virtual void Awake() 
 {
     _unit = Prefabs[_unitIndex].GetComponent<Unit>();
-    _unitCommon = _unit.GetComponent<UnitCommon>();
     _maxHealth = Health;
     IsDead = false;
-    PlayerInstance = this;
 }
 private void OnEnable() 
 {
@@ -55,8 +48,9 @@ private void OnEnable()
 
 private void OnDisable() 
 {
-    OnPlayerDies -= Die;
+    OnPlayerDies -= Die;     
 }
+
 
 public virtual void Start() 
 {
@@ -73,8 +67,6 @@ void FixedUpdate()
                 ResourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime; 
             }
         }
-
-        Debug.Log("Pocet v listu: " + FlyAttackersTargets.Count);
     }
 
 private void LateUpdate() 
@@ -100,7 +92,7 @@ public void DeployUnit(int unitIndex)
         PayforUnit(_unit.Price);
         SpawnUnit(unitIndex);
         _notEnoughResourcesText.enabled = false;
-    }
+        }
     else
     {
         _notEnoughResourcesText.enabled = true;
@@ -114,6 +106,8 @@ IEnumerator HideNotEnoughResourcesText()
         _notEnoughResourcesText.enabled = false;
     }
 
+
+
 private void UpdateHealthBar(float maxHealth, float health)
 {
     _myHealthBar.fillAmount = health / maxHealth;
@@ -122,7 +116,7 @@ private void UpdateHealthBar(float maxHealth, float health)
 public override void SpawnUnit(int unitIndex)
     {
         Vector3 spawn = new Vector3 (_spawnPoint.transform.position.x, _spawnPoint.transform.position.y, _spawnPoint.transform.position.z);
-        DeployedUnit  = Instantiate(Prefabs[unitIndex], spawn, Quaternion.identity);
+        Instantiate(Prefabs[unitIndex], spawn, Quaternion.identity);
     }
 
 private bool bIsPressed = false;
@@ -171,25 +165,6 @@ private void OnTriggerEnter(Collider other)
             }
         }
 }
-
-public void AddFlyToList()
-    {
-        if((_unit.tag == "Fly") && (_unit.MyFaction != _playerFaction))
-        {
-            Debug.Log("Item added");
-            FlyAttackersTargets.Add(_unitCommon);
-        }
-    }
-
-public void RemoveFlyFromList()
-    {
-        if ((_unit.tag == "Fly") && (_unit.MyFaction != _playerFaction))
-        {
-            FlyAttackersTargets.Remove(_unitCommon);
-            Debug.Log("Item removed");
-        }
-    }
-
 private void PlayerDeathCondition()
     {
         if (Health <= 0)

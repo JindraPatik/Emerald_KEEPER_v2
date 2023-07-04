@@ -6,7 +6,7 @@ public abstract class PlayerController : MonoBehaviour
 {
     #region Variables
     
-    [SerializeField] List<GameObject> _prefabs;
+    [SerializeField] GameObject[] _prefabs;
     [SerializeField] float _health;
     [SerializeField] float _resourcesValue;
     [SerializeField] float _resourcesIncreasedPerSecond;
@@ -19,7 +19,7 @@ public abstract class PlayerController : MonoBehaviour
     }
 
 
-    public List<GameObject> Prefabs
+    public GameObject[] Prefabs
     {
          get { return _prefabs; } 
          set { _prefabs = value; }

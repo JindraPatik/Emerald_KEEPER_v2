@@ -13,10 +13,10 @@ public class UnitCommon : Unit, IDeath
     [SerializeField] float _fightTime;
     public bool IsMoving = true;
     public Action OnUnitDie;
-    public Action OnUnitSpawn;
     public Vector3 UnitPosition;
 
     public Action UnitHit;
+
     #endregion
 
     #region Initial Methods
@@ -31,14 +31,12 @@ public class UnitCommon : Unit, IDeath
     {
         GameManager.Instance.OnPauseGame += StopUnitMovement;
         GameManager.Instance.OnResumeGame += MoveAgain;
-        OnUnitSpawn += Player.PlayerInstance.AddFlyToList;
     }
 
     public virtual void OnDisable()
     {
         GameManager.Instance.OnPauseGame -= StopUnitMovement;
         GameManager.Instance.OnResumeGame -= MoveAgain;
-        OnUnitDie -= Player.PlayerInstance.AddFlyToList;
     }
 
 
@@ -46,7 +44,6 @@ public class UnitCommon : Unit, IDeath
     {
         _myTransform = transform;
         InitialMoveSpeedDirection();
-        OnUnitSpawn?.Invoke();
     }
 
     #endregion
@@ -68,8 +65,6 @@ public class UnitCommon : Unit, IDeath
     {
         return 0f;
     }
-
-    public void UnitInGame() { }
 
 
     //If enemy switch direction
