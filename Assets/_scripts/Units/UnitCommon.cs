@@ -16,7 +16,6 @@ public class UnitCommon : Unit, IDeath
     public Vector3 UnitPosition;
 
     public Action UnitHit;
-
     #endregion
 
     #region Initial Methods
@@ -31,12 +30,14 @@ public class UnitCommon : Unit, IDeath
     {
         GameManager.Instance.OnPauseGame += StopUnitMovement;
         GameManager.Instance.OnResumeGame += MoveAgain;
+        Player.PlayerInstance.OnUnitDeployed += UnitInGame;
     }
 
     public virtual void OnDisable()
     {
         GameManager.Instance.OnPauseGame -= StopUnitMovement;
         GameManager.Instance.OnResumeGame -= MoveAgain;
+        Player.PlayerInstance.OnUnitDeployed -= UnitInGame;
     }
 
 
@@ -65,6 +66,8 @@ public class UnitCommon : Unit, IDeath
     {
         return 0f;
     }
+
+    public void UnitInGame() { }
 
 
     //If enemy switch direction

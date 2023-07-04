@@ -9,7 +9,7 @@ public class HumanPlayer : Player
     private BTN_click _btnClick;
     private BTN_cooldown _btnCooldown;
     KeyboardCooldown _keyboardCooldown;
-    [SerializeField] GameObject[] _buttonObjects;
+    [SerializeField] List<GameObject> _buttonObjects;
     [SerializeField] List<TMP_Text> _btnPrices, _btnStrenghts;
     [SerializeField] GameObject _rocket;
     private HomingMissile _hoomingMissile;
@@ -26,7 +26,7 @@ public class HumanPlayer : Player
         _keyboardCooldown.CooldownDisable();
 
 
-        for (int i = 0; i < _buttonObjects.Length; i++)
+        for (int i = 0; i < _buttonObjects.Count; i++)
         {
             GameObject buttonObject = _buttonObjects[i];
             TMP_Text btnPrice = _btnPrices[i];
@@ -96,13 +96,14 @@ public class HumanPlayer : Player
                 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    //_btnClick = _buttonObjects[4].GetComponent<BTN_click>();
                     _hoomingMissile.LaunchRocket();
                 }
                 else if (Input.GetKeyUp(KeyCode.Space))
                 {
-                    //_btnClick = _buttonObjects[6].GetComponent<BTN_click>();
+                    //_btnClick = _buttonObjects[4].GetComponent<BTN_click>();
                     //_btnClick.ButtonUnpressed();
-                }
+            }
 
 
         }

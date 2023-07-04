@@ -17,6 +17,7 @@ private bool _hasEnoughResources;
 private Harvester harvester;
 private Unit unit;
 private float _maxHealth;
+public GameObject DeployedUnit;
 
 [SerializeField] Unit.Faction _playerFaction;
 [SerializeField] TMP_Text _resourcesTXT;
@@ -27,6 +28,10 @@ private float _maxHealth;
 public event Action OnPlayerDies;
 public Action OnPlayerHit;
 public Action OnCrysralDelivery;
+public Action OnUnitDeployed;
+
+public static Player PlayerInstance;
+
 
 public Unit.Faction PlayerFaction
 {
@@ -40,6 +45,7 @@ public virtual void Awake()
     _unit = Prefabs[_unitIndex].GetComponent<Unit>();
     _maxHealth = Health;
     IsDead = false;
+    PlayerInstance = this;
 }
 private void OnEnable() 
 {
@@ -92,7 +98,7 @@ public void DeployUnit(int unitIndex)
         PayforUnit(_unit.Price);
         SpawnUnit(unitIndex);
         _notEnoughResourcesText.enabled = false;
-        }
+    }
     else
     {
         _notEnoughResourcesText.enabled = true;
@@ -106,8 +112,6 @@ IEnumerator HideNotEnoughResourcesText()
         _notEnoughResourcesText.enabled = false;
     }
 
-
-
 private void UpdateHealthBar(float maxHealth, float health)
 {
     _myHealthBar.fillAmount = health / maxHealth;
@@ -116,7 +120,8 @@ private void UpdateHealthBar(float maxHealth, float health)
 public override void SpawnUnit(int unitIndex)
     {
         Vector3 spawn = new Vector3 (_spawnPoint.transform.position.x, _spawnPoint.transform.position.y, _spawnPoint.transform.position.z);
-        Instantiate(Prefabs[unitIndex], spawn, Quaternion.identity);
+        DeployedUnit  = Instantiate(Prefabs[unitIndex], spawn, Quaternion.identity);
+        OnUnitDeployed?.Invoke();
     }
 
 private bool bIsPressed = false;
