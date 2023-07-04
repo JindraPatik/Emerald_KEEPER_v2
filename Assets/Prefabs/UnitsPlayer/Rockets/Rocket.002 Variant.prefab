@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _strenght: 100
-  _spawnpoint: {fileID: 0}
+  _spawnpoint: {fileID: 6580055343472680722, guid: ec8b9c487f569024eac2ad440d461db6, type: 3}
   _myFaction: 0
   _price: 10
   MyRigidBody: {fileID: 6312215390543696207}
@@ -118,6 +118,7 @@ MonoBehaviour:
   UnitPosition: {x: 0, y: 0, z: 0}
   _rocketSpawnPointObject: {fileID: 6580055343472680722, guid: ec8b9c487f569024eac2ad440d461db6, type: 3}
   _speedExponent: 1
+  _rotateSpeed: 50
 --- !u!136 &736596507177746654
 CapsuleCollider:
   m_ObjectHideFlags: 0
