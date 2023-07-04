@@ -122,7 +122,7 @@ public class UnitCommon : Unit, IDeath
     //interface die
     public void Die()
     {
-        OnUnitDie?.Invoke();
+        OnUnitDie?.Invoke(this);
         UnitPosition = transform.position;
         Destroy(gameObject);
     }

@@ -20,6 +20,7 @@ private Unit unit;
 private float _maxHealth;
 
 public GameObject SpawnedUnit;
+public List<GameObject> FlyUnits = new List<GameObject>();
 
 [SerializeField] Unit.Faction _playerFaction;
 [SerializeField] TMP_Text _resourcesTXT;
@@ -63,6 +64,8 @@ public virtual void Start()
 
 void FixedUpdate()
     {
+        Debug.Log("List: " + FlyUnits.Count);
+
         if(!IsDead)
         {
             if (!GameManager.Instance.GameIsPaused)
@@ -121,6 +124,12 @@ public override void SpawnUnit(int unitIndex)
     {
         Vector3 spawn = new Vector3 (_spawnPoint.transform.position.x, _spawnPoint.transform.position.y, _spawnPoint.transform.position.z);
         SpawnedUnit = Instantiate(Prefabs[unitIndex], spawn, Quaternion.identity);
+        Unit _spawnedUnit = SpawnedUnit.GetComponent<Unit>();
+
+        if (SpawnedUnit.CompareTag("Fly"))
+        {
+            FlyUnits.Add(SpawnedUnit);
+        }
     }
 
 private bool bIsPressed = false;

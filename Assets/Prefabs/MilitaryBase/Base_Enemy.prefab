@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3981555584685417182}
   - component: {fileID: 8713216983055558066}
   - component: {fileID: 5733982974665955201}
-  - component: {fileID: 1769957434781387591}
   m_Layer: 0
   m_Name: Base_Enemy
   m_TagString: Untagged
@@ -79,6 +78,9 @@ MonoBehaviour:
   _health: 100
   _resourcesValue: 10
   _resourcesIncreasedPerSecond: 1
+  Unit: {fileID: 0}
+  UnitCommon: {fileID: 0}
+  SpawnedUnit: {fileID: 0}
   _playerFaction: 1
   _resourcesTXT: {fileID: 0}
   _notEnoughResourcesText: {fileID: 0}
@@ -208,19 +210,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyboardCDTime: 0.3
---- !u!114 &1769957434781387591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2409077679395808381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e130796609ace45b58f3d38fbde63a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FlyAttackers: []
 --- !u!1001 &1492994446189531505
 PrefabInstance:
   m_ObjectHideFlags: 0
