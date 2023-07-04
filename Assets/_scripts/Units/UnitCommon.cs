@@ -13,6 +13,7 @@ public class UnitCommon : Unit, IDeath
     [SerializeField] float _fightTime;
     public bool IsMoving = true;
     public Action OnUnitDie;
+    public Action OnUnitSpawn;
     public Vector3 UnitPosition;
 
     public Action UnitHit;
@@ -30,14 +31,14 @@ public class UnitCommon : Unit, IDeath
     {
         GameManager.Instance.OnPauseGame += StopUnitMovement;
         GameManager.Instance.OnResumeGame += MoveAgain;
-        Player.PlayerInstance.OnUnitDeployed += UnitInGame;
+        OnUnitSpawn += Player.PlayerInstance.AddFlyToList;
     }
 
     public virtual void OnDisable()
     {
         GameManager.Instance.OnPauseGame -= StopUnitMovement;
         GameManager.Instance.OnResumeGame -= MoveAgain;
-        Player.PlayerInstance.OnUnitDeployed -= UnitInGame;
+        OnUnitDie -= Player.PlayerInstance.AddFlyToList;
     }
 
 
@@ -45,6 +46,7 @@ public class UnitCommon : Unit, IDeath
     {
         _myTransform = transform;
         InitialMoveSpeedDirection();
+        OnUnitSpawn?.Invoke();
     }
 
     #endregion

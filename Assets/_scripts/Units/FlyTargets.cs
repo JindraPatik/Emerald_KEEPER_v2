@@ -12,11 +12,12 @@ public class FlyTargets : MonoBehaviour
     public List<Unit> FlyAttackers = new List<Unit>();
     private Unit unit;
 
+
     #endregion
 
     private void OnEnable()
     {
-        _player.OnUnitDeployed += AddFlyUnitToList;
+
     }
 
     private void Awake()
@@ -28,15 +29,6 @@ public class FlyTargets : MonoBehaviour
     private void Update()
     {
         Debug.Log("List count:" + FlyAttackers.Count);
-    }
-
-    private void AddFlyUnitToList()
-    {
-        if((_myFaction != unit.MyFaction) && (unit.tag == "Fly"))
-        {
-            FlyAttackers.Add(unit);
-
-        }
     }
 
 

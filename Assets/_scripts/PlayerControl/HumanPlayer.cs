@@ -53,6 +53,8 @@ public class HumanPlayer : Player
     
     public void Update()
     {
+        Debug.Log("my faction: " + PlayerFaction + "enemy targets count: " + FlyAttackersTargets.Count);
+
         if(!_btnCooldown.IsCooldown && !GameManager.Instance.GameIsPaused)
             {
             

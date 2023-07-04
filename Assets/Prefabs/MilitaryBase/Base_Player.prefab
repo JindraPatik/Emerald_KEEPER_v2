@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2582556927847887704}
   - component: {fileID: 1410800214478458803}
   - component: {fileID: 5412917203240722568}
-  - component: {fileID: 4486617747236571736}
   m_Layer: 0
   m_Name: Base_Player
   m_TagString: Untagged
@@ -79,6 +78,8 @@ MonoBehaviour:
   _health: 100
   _resourcesValue: 10
   _resourcesIncreasedPerSecond: 1
+  DeployedUnit: {fileID: 0}
+  FlyAttackers: []
   _playerFaction: 0
   _resourcesTXT: {fileID: 0}
   _notEnoughResourcesText: {fileID: 0}
@@ -224,19 +225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _keyboardCDTime: 0.3
---- !u!114 &4486617747236571736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934849801890150640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e130796609ace45b58f3d38fbde63a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FlyAttackers: []
 --- !u!1001 &4120702512530853372
 PrefabInstance:
   m_ObjectHideFlags: 0
