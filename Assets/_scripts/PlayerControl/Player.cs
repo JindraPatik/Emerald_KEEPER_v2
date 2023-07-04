@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class Player : PlayerController, IDeath
 
@@ -16,11 +17,11 @@ private Transform _spawnPoint;
 private int _unitIndex;
 private bool _hasEnoughResources; 
 private Harvester harvester;
-private Unit unit;
+private UnitCommon unit;
 private float _maxHealth;
 
 public GameObject SpawnedUnit;
-public List<GameObject> FlyUnits = new List<GameObject>();
+public static List<GameObject> FlyObject = new List<GameObject>();  
 
 [SerializeField] Unit.Faction _playerFaction;
 [SerializeField] TMP_Text _resourcesTXT;
@@ -64,8 +65,7 @@ public virtual void Start()
 
 void FixedUpdate()
     {
-        Debug.Log("List: " + FlyUnits.Count);
-
+        Debug.Log("FlyObjects: " + FlyObject.Count);
         if(!IsDead)
         {
             if (!GameManager.Instance.GameIsPaused)
@@ -113,8 +113,6 @@ IEnumerator HideNotEnoughResourcesText()
         _notEnoughResourcesText.enabled = false;
     }
 
-
-
 private void UpdateHealthBar(float maxHealth, float health)
 {
     _myHealthBar.fillAmount = health / maxHealth;
@@ -124,12 +122,6 @@ public override void SpawnUnit(int unitIndex)
     {
         Vector3 spawn = new Vector3 (_spawnPoint.transform.position.x, _spawnPoint.transform.position.y, _spawnPoint.transform.position.z);
         SpawnedUnit = Instantiate(Prefabs[unitIndex], spawn, Quaternion.identity);
-        Unit _spawnedUnit = SpawnedUnit.GetComponent<Unit>();
-
-        if (SpawnedUnit.CompareTag("Fly"))
-        {
-            FlyUnits.Add(SpawnedUnit);
-        }
     }
 
 private bool bIsPressed = false;
@@ -165,7 +157,7 @@ private void OnTriggerEnter(Collider other)
         }
     }
 
-    if (other.gameObject.TryGetComponent<Unit>(out unit))
+    if (other.gameObject.TryGetComponent<UnitCommon>(out unit))
     {
         //pokud má jednotka jinou frakci
         if (unit.MyFaction != _playerFaction)
@@ -173,11 +165,13 @@ private void OnTriggerEnter(Collider other)
                 Health -= unit.Strenght;
                 UpdateHealthBar(_maxHealth, Health);
                 OnPlayerHit?.Invoke();
-                Destroy(unit.gameObject);
+                unit.OnUnitDie();
+                //Destroy(unit.gameObject);
                 PlayerDeathCondition();
             }
         }
-}
+    }
+
 private void PlayerDeathCondition()
     {
         if (Health <= 0)

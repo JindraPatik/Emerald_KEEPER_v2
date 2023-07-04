@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitCommon : Unit, IDeath
@@ -32,12 +34,18 @@ public class UnitCommon : Unit, IDeath
     {
         GameManager.Instance.OnPauseGame += StopUnitMovement;
         GameManager.Instance.OnResumeGame += MoveAgain;
+        OnUnitSpawn += AddUnitToFlyList;
+        OnUnitDie += RemoveUnitFromFlyList;
+
+        
     }
 
     public virtual void OnDisable()
     {
         GameManager.Instance.OnPauseGame -= StopUnitMovement;
         GameManager.Instance.OnResumeGame -= MoveAgain;
+        OnUnitSpawn -= AddUnitToFlyList;
+        OnUnitDie -= RemoveUnitFromFlyList;
     }
 
 
@@ -48,6 +56,7 @@ public class UnitCommon : Unit, IDeath
         OnUnitSpawn?.Invoke();
     }
 
+    
     #endregion
 
     #region Movement methods
@@ -122,7 +131,7 @@ public class UnitCommon : Unit, IDeath
     //interface die
     public void Die()
     {
-        OnUnitDie?.Invoke(this);
+        OnUnitDie?.Invoke();
         UnitPosition = transform.position;
         Destroy(gameObject);
     }
@@ -172,6 +181,21 @@ public class UnitCommon : Unit, IDeath
 
     }
 
+    public void AddUnitToFlyList()
+    {
+        if (this.gameObject.tag == "Fly")
+        {
+            Player.FlyObject.Add(this.gameObject);   
+        }     
+    }
+
+    public void RemoveUnitFromFlyList()
+    {
+        if (this.gameObject.tag == "Fly")
+        {
+            Player.FlyObject.Remove(this.gameObject);
+        }
+    }
 
     #endregion
 
