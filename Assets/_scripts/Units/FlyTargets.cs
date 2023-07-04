@@ -9,15 +9,20 @@ public class FlyTargets : MonoBehaviour
 
     private Player _player;
     private Unit.Faction _myFaction;
-    public List<Unit> FlyAttackers = new List<Unit>();
-    private Unit unit;
+    public List<GameObject> Flyunits = new List<GameObject>();
+    private UnitCommon _unitCommon;
 
 
     #endregion
 
     private void OnEnable()
     {
+    }
 
+    private void OnDisable()
+    {
+        _unitCommon.OnUnitSpawn -= AddFlyToList;
+        _unitCommon.OnUnitDie -= RemoveFlyToList;
     }
 
     private void Awake()
@@ -25,12 +30,28 @@ public class FlyTargets : MonoBehaviour
         _player = GetComponent<Player>();
         _myFaction = _player.PlayerFaction;
     }
+    private void Start()
+    {
+        _unitCommon = _player.UnitCommon.GetComponent<UnitCommon>();
+        _unitCommon.OnUnitSpawn += AddFlyToList;
+        _unitCommon.OnUnitDie += RemoveFlyToList;
+    }
 
     private void Update()
     {
-        Debug.Log("List count:" + FlyAttackers.Count);
+        Debug.Log("List count:" + Flyunits.Count);
     }
 
+    private void AddFlyToList()
+    {
+        Debug.Log("Unit added");
+        Flyunits.Add(_player.SpawnedUnit);
+    }
 
+    private void RemoveFlyToList() 
+    {
+        Debug.Log("Unit removed");
+        Flyunits.Remove(_player.SpawnedUnit);
+    }
 
 }

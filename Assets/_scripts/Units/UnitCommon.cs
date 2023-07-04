@@ -12,10 +12,11 @@ public class UnitCommon : Unit, IDeath
     [HideInInspector] public float MyInitialSpeed;
     [SerializeField] float _fightTime;
     public bool IsMoving = true;
-    public Action OnUnitDie;
     public Vector3 UnitPosition;
 
-    public Action UnitHit;
+    public  Action OnUnitDie;
+    public Action OnUnitSpawn;
+    public Action OnUnitHit;
 
     #endregion
 
@@ -44,6 +45,7 @@ public class UnitCommon : Unit, IDeath
     {
         _myTransform = transform;
         InitialMoveSpeedDirection();
+        OnUnitSpawn?.Invoke();
     }
 
     #endregion
@@ -120,8 +122,8 @@ public class UnitCommon : Unit, IDeath
     //interface die
     public void Die()
     {
-        UnitPosition = transform.position;
         OnUnitDie?.Invoke();
+        UnitPosition = transform.position;
         Destroy(gameObject);
     }
 
@@ -140,7 +142,7 @@ public class UnitCommon : Unit, IDeath
         {
             if (Strenght > otherAttacker.Strenght)
             {
-                UnitHit?.Invoke();
+                OnUnitHit?.Invoke();
 
                 if (otherAttacker is IDeath otherAttackerDeath)
                 {

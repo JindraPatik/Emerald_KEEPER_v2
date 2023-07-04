@@ -17,12 +17,12 @@ public class UnitSounds : MonoBehaviour
 
     private void OnEnable()
     {
-        _unitCommon.UnitHit += PlayUnitHitSound;
+        _unitCommon.OnUnitHit += PlayUnitHitSound;
     }
 
     private void OnDisable()
     {
-        _unitCommon.UnitHit -= PlayUnitHitSound;
+        _unitCommon.OnUnitHit -= PlayUnitHitSound;
     }
 
     private void PlayUnitHitSound()

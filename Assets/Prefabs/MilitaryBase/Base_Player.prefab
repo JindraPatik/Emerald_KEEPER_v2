@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2582556927847887704}
   - component: {fileID: 1410800214478458803}
   - component: {fileID: 5412917203240722568}
+  - component: {fileID: 457347229989845091}
   m_Layer: 0
   m_Name: Base_Player
   m_TagString: Untagged
@@ -71,20 +72,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabs:
-  - {fileID: 77495236875070132, guid: 9a3698b678fa33446bb6f81562d0406d, type: 3}
+  - {fileID: 77495236875070132, guid: 1040d0d02a22dee4a94f6fc896664ca7, type: 3}
+  - {fileID: 77495236875070132, guid: 645668c4a6421e940851917c0097d725, type: 3}
+  - {fileID: 77495236875070132, guid: c9109cbccfa6f2942b8a7c1260b11d30, type: 3}
+  - {fileID: 77495236875070132, guid: b903a90b70baba14d994fbfa84ae6d81, type: 3}
   _health: 100
-  _resourcesValue: 0
+  _resourcesValue: 10
   _resourcesIncreasedPerSecond: 1
-  _spawnPoint: {fileID: 0}
-  _unitIndex: 0
   _playerFaction: 0
   _resourcesTXT: {fileID: 0}
   _notEnoughResourcesText: {fileID: 0}
   _myHealth: {fileID: 0}
   _myHealthBar: {fileID: 0}
-  _buttonObject: {fileID: 0}
-  _btnPrice: {fileID: 0}
-  _btnStrenght: {fileID: 0}
+  _buttonObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _btnPrices:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _btnStrenghts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _rocket: {fileID: 2658742427449493720, guid: d64879a8f2e21084eb82ad87555d1635, type: 3}
 --- !u!114 &2582556927847887704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +223,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0c9818c33862a48a35c816742ff48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _keyboardCDTime: 0.3
+--- !u!114 &457347229989845091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934849801890150640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e130796609ace45b58f3d38fbde63a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlyAttackers: []
 --- !u!1001 &4120702512530853372
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,13 +10,16 @@ public class Player : PlayerController, IDeath
 {
 #region Variables
 
-private Unit _unit;
+public Unit Unit;
+public UnitCommon UnitCommon;
 private Transform _spawnPoint;
 private int _unitIndex;
 private bool _hasEnoughResources; 
 private Harvester harvester;
 private Unit unit;
 private float _maxHealth;
+
+public GameObject SpawnedUnit;
 
 [SerializeField] Unit.Faction _playerFaction;
 [SerializeField] TMP_Text _resourcesTXT;
@@ -37,7 +40,8 @@ public Unit.Faction PlayerFaction
 
 public virtual void Awake() 
 {
-    _unit = Prefabs[_unitIndex].GetComponent<Unit>();
+    Unit = Prefabs[_unitIndex].GetComponent<Unit>();
+    UnitCommon = Prefabs[_unitIndex].GetComponent<UnitCommon>();
     _maxHealth = Health;
     IsDead = false;
 }
@@ -84,12 +88,12 @@ private void PayforUnit(float price)
 
 public void DeployUnit(int unitIndex)
 {
-    _unit = Prefabs[unitIndex].GetComponent<Unit>();
-    _spawnPoint = _unit.SpawnPoint;
+    Unit = Prefabs[unitIndex].GetComponent<Unit>();
+    _spawnPoint = Unit.SpawnPoint;
 
-    if(!IsDead && HasEnoughResources(ResourcesValue, _unit) && !GameManager.Instance.GameIsPaused)
+    if(!IsDead && HasEnoughResources(ResourcesValue, Unit) && !GameManager.Instance.GameIsPaused)
     {
-        PayforUnit(_unit.Price);
+        PayforUnit(Unit.Price);
         SpawnUnit(unitIndex);
         _notEnoughResourcesText.enabled = false;
         }
@@ -116,7 +120,7 @@ private void UpdateHealthBar(float maxHealth, float health)
 public override void SpawnUnit(int unitIndex)
     {
         Vector3 spawn = new Vector3 (_spawnPoint.transform.position.x, _spawnPoint.transform.position.y, _spawnPoint.transform.position.z);
-        Instantiate(Prefabs[unitIndex], spawn, Quaternion.identity);
+        SpawnedUnit = Instantiate(Prefabs[unitIndex], spawn, Quaternion.identity);
     }
 
 private bool bIsPressed = false;

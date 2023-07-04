@@ -9288,17 +9288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b10e25c9e797024e959b8913362260e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2133377806 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5412917203240722568, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-  m_PrefabInstance: {fileID: 934849803244703456}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c0c9818c33862a48a35c816742ff48d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2143830558
 GameObject:
   m_ObjectHideFlags: 0
@@ -9432,90 +9421,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5412917203240722568, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _keyboardCDTime
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _rocket
-      value: 
-      objectReference: {fileID: 2658742427449493720, guid: d64879a8f2e21084eb82ad87555d1635, type: 3}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnPrice
-      value: 
-      objectReference: {fileID: 1792106054}
     - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
       propertyPath: _myHealth
       value: 
       objectReference: {fileID: 681486716}
     - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _spawnPoint
-      value: 
-      objectReference: {fileID: 353609939}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnStrenght
-      value: 
-      objectReference: {fileID: 1711174793}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
       propertyPath: _myHealthBar
       value: 
       objectReference: {fileID: 2143830560}
     - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _buttonObject
-      value: 
-      objectReference: {fileID: 1137220486}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
       propertyPath: _resourcesTXT
       value: 
       objectReference: {fileID: 21338567}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _resourcesValue
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _keyboardCooldown
-      value: 
-      objectReference: {fileID: 2133377806}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _prefabs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnPrice.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnPrices.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _prefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 77495236875070132, guid: 1040d0d02a22dee4a94f6fc896664ca7, type: 3}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _prefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 77495236875070132, guid: 645668c4a6421e940851917c0097d725, type: 3}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _prefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 77495236875070132, guid: c9109cbccfa6f2942b8a7c1260b11d30, type: 3}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _prefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 77495236875070132, guid: b903a90b70baba14d994fbfa84ae6d81, type: 3}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnPrice.Array.data[0]
-      value: 
-      objectReference: {fileID: 1792106054}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnPrice.Array.data[1]
-      value: 
-      objectReference: {fileID: 1003527559}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnStrenght.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
       propertyPath: _notEnoughResourcesText
       value: 
@@ -9537,26 +9454,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 875535248}
     - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnStrenghts.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _buttonObject.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _buttonObjects.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnStrenght.Array.data[0]
-      value: 
-      objectReference: {fileID: 1711174793}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _btnStrenght.Array.data[1]
-      value: 
-      objectReference: {fileID: 759071504}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
       propertyPath: _btnStrenghts.Array.data[0]
       value: 
       objectReference: {fileID: 1711174793}
@@ -9572,14 +9469,6 @@ PrefabInstance:
       propertyPath: _btnStrenghts.Array.data[3]
       value: 
       objectReference: {fileID: 608793202}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _buttonObject.Array.data[0]
-      value: 
-      objectReference: {fileID: 1137220486}
-    - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
-      propertyPath: _buttonObject.Array.data[1]
-      value: 
-      objectReference: {fileID: 1388606134}
     - target: {fileID: 6356054930231142589, guid: f9f0e3095b15b1d4984ff02d95ac1901, type: 3}
       propertyPath: _buttonObjects.Array.data[0]
       value: 
@@ -9718,18 +9607,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5733982974665955201, guid: 14c900114946805458538ff66e00bfc1, type: 3}
-      propertyPath: _keyboardCDTime
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
       propertyPath: _myHealth
       value: 
       objectReference: {fileID: 1689610321}
-    - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
-      propertyPath: _spawnPoint
-      value: 
-      objectReference: {fileID: 238309464}
     - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
       propertyPath: _myHealthBar
       value: 
@@ -9738,22 +9619,6 @@ PrefabInstance:
       propertyPath: _resourcesTXT
       value: 
       objectReference: {fileID: 986432494}
-    - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
-      propertyPath: _prefabs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
-      propertyPath: _prefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 77495236875070132, guid: 30788ed8c122e034b95e5404e971c124, type: 3}
-    - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
-      propertyPath: _prefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 77495236875070132, guid: 9173161567c3381478d996fe7102b07d, type: 3}
-    - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
-      propertyPath: _prefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 77495236875070132, guid: a8f293e911c9078478df293f0356fbd1, type: 3}
     - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
       propertyPath: _notEnoughResourcesText
       value: 
