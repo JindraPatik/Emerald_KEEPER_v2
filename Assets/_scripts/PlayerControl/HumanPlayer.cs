@@ -15,6 +15,7 @@ public class HumanPlayer : Player
     private HomingMissile _hoomingMissile;
     private Unit _myUnit;
     public static HumanPlayer HumanPlayerInstance;
+    
 
 
     public override void Awake() 
@@ -53,7 +54,7 @@ public class HumanPlayer : Player
     
     public void Update()
     {
-        Debug.Log("my faction: " + PlayerFaction + "enemy targets count: " + FlyAttackersTargets.Count);
+        Debug.Log("my faction: " + PlayerFaction + "enemy targets count: " + Player.PlayerInstance.FlyAttackersTargets.Count);
 
         if(!_btnCooldown.IsCooldown && !GameManager.Instance.GameIsPaused)
             {
@@ -124,4 +125,6 @@ public class HumanPlayer : Player
             _btnCooldown.CooldownEnable();
         }
     }
+
+    
 }
