@@ -89,6 +89,7 @@ public class HumanPlayer : Player
                 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if (Input.GetKeyDown(KeyCode.A))
                 {
                     SendUnit(3);
@@ -113,6 +114,8 @@ public class HumanPlayer : Player
 =======
 =======
 >>>>>>> parent of 118f54e (Raketka letí nahoru)
+=======
+>>>>>>> parent of 118f54e (Raketka letí nahoru)
             if (Input.GetKeyDown(KeyCode.A))
             {
                 Debug.Log("C");
@@ -124,6 +127,9 @@ public class HumanPlayer : Player
                 _btnClick.ButtonUnpressed();
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 118f54e (Raketka letí nahoru)
+=======
 >>>>>>> parent of 118f54e (Raketka letí nahoru)
 =======
 >>>>>>> parent of 118f54e (Raketka letí nahoru)
