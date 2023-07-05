@@ -24,6 +24,18 @@ public class Missile : UnitCommon
         SetCurrentTarget();
     }
 
+    private void FixedUpdate()
+    {
+        SetSpeed();
+        if (_currentTarget != null)
+        {
+            StartCoroutine(AimingActivation());
+        }
+        else
+        {
+            Debug.Log("No current target");
+        }
+    }
     private void SetCurrentTarget()
     {
         if (_targets != null && _targets.Count > 0)
@@ -37,18 +49,6 @@ public class Missile : UnitCommon
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (_currentTarget != null)
-        {
-            SetSpeed();
-            StartCoroutine(AimingActivation());
-        }
-        else
-        {
-            Debug.Log("No current target");
-        }
-    }
 
     IEnumerator AimingActivation()
     {

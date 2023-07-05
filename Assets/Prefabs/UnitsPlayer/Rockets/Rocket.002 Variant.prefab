@@ -168,7 +168,7 @@ MonoBehaviour:
   UnitPosition: {x: 0, y: 0, z: 0}
   _rotationForce: 5000
   _speedExponent: 1
-  _aimingDelay: 0.5
+  _aimingDelay: 1
 --- !u!4 &3435701751357067874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 62aaded99a5e45141b324c8fd86b5c11, type: 3}
