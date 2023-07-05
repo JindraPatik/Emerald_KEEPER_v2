@@ -17,19 +17,13 @@ public class Missile : UnitCommon
     {
         base.Awake();
         _targets = new List<GameObject>();
-<<<<<<< HEAD
-        //SetCurrentTarget();
-        //SetTargetList();
-        //_missileCheckpoints = new List<Transform>();
         _currentTarget = _missileCheckpoints[0];
     }
 
     public override void Start()
     {
         base.Start();
-=======
         Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
->>>>>>> parent of cd16cc9 (Raketa lítá ale nakokot :D)
     }
 
     private void SetCurrentTarget()
@@ -46,7 +40,6 @@ public class Missile : UnitCommon
 
     private void FixedUpdate()
     {
-<<<<<<< HEAD
         if (_currentTarget != null)
         {
             SetRotation(SetDirection()); 
@@ -61,11 +54,9 @@ public class Missile : UnitCommon
         {
             Debug.Log("No current target");
         }
-=======
-        _direction = SetDirection();
+        var _direction = SetDirection();
         SetRotation(_direction);
         SetSpeed();
->>>>>>> parent of cd16cc9 (Raketa lítá ale nakokot :D)
     }
 
     private bool HasReachedCheckpoint()
