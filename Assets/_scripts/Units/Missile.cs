@@ -18,6 +18,8 @@ public class Missile : UnitCommon
         base.Awake();
         _targets = new List<GameObject>();
         Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
+        SetTargetList();
+        SetCurrentTarget();
     }
 
     private void SetCurrentTarget()
@@ -28,22 +30,37 @@ public class Missile : UnitCommon
         }
         else
         {
+            _currentTarget = null;
             Debug.Log("Targets is NULL or empty");
         }
     }
 
     private void FixedUpdate()
     {
-        _direction = SetDirection();
-        SetRotation(_direction);
-        SetSpeed();
+        if (_currentTarget != null)
+        {
+            SetRotation(SetDirection()); 
+            SetDirection();
+            SetSpeed();
+        }
+        else
+        {
+            Debug.Log("No current target");
+        }
     }
 
     private Vector3 SetDirection()
     {
-        Vector3 direction = _currentTarget.position - MyRigidBody.transform.position;
-        direction.Normalize();
-        return direction;
+        if (_currentTarget != null)
+        {
+            Vector3 direction = _currentTarget.position - MyRigidBody.position;
+            direction.Normalize();
+            return direction; 
+        }
+        else
+        {
+            return Vector3.up;
+        }
     }
 
     private void SetRotation(Vector3 direction)
@@ -75,9 +92,6 @@ public class Missile : UnitCommon
     public void LaunchRocket()
     {
         SpawnRocket();
-        SetTargetList();
-        SetCurrentTarget();
-        SetDirection();
     }
 
     private Attacker flyUnit;
