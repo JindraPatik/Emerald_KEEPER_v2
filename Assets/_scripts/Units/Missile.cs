@@ -17,6 +17,7 @@ public class Missile : UnitCommon
     {
         base.Awake();
         _targets = new List<GameObject>();
+<<<<<<< HEAD
         //SetCurrentTarget();
         //SetTargetList();
         //_missileCheckpoints = new List<Transform>();
@@ -26,6 +27,9 @@ public class Missile : UnitCommon
     public override void Start()
     {
         base.Start();
+=======
+        Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
+>>>>>>> parent of cd16cc9 (Raketa lítá ale nakokot :D)
     }
 
     private void SetCurrentTarget()
@@ -36,13 +40,13 @@ public class Missile : UnitCommon
         }
         else
         {
-            _currentTarget = null;
             Debug.Log("Targets is NULL or empty");
         }
     }
 
     private void FixedUpdate()
     {
+<<<<<<< HEAD
         if (_currentTarget != null)
         {
             SetRotation(SetDirection()); 
@@ -57,6 +61,11 @@ public class Missile : UnitCommon
         {
             Debug.Log("No current target");
         }
+=======
+        _direction = SetDirection();
+        SetRotation(_direction);
+        SetSpeed();
+>>>>>>> parent of cd16cc9 (Raketa lítá ale nakokot :D)
     }
 
     private bool HasReachedCheckpoint()
@@ -82,16 +91,9 @@ public class Missile : UnitCommon
 
     private Vector3 SetDirection()
     {
-        if (_currentTarget != null)
-        {
-            Vector3 direction = _currentTarget.position - MyRigidBody.position;
-            direction.Normalize();
-            return direction; 
-        }
-        else
-        {
-            return Vector3.up;
-        }
+        Vector3 direction = _currentTarget.position - MyRigidBody.transform.position;
+        direction.Normalize();
+        return direction;
     }
 
     private void SetRotation(Vector3 direction)
@@ -125,6 +127,9 @@ public class Missile : UnitCommon
         SetCurrentTarget();
         SetTargetList();
         SpawnRocket();
+        SetTargetList();
+        SetCurrentTarget();
+        SetDirection();
     }
 
     private Attacker flyUnit;
