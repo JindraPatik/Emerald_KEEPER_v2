@@ -10,13 +10,19 @@ public class Missile : UnitCommon
     private Transform _currentTarget;
     [SerializeField] private float _rotationForce;
     [SerializeField] float _speedExponent;
+    private Rigidbody _rb;
     private List<GameObject> _targets;
+<<<<<<< HEAD
     [SerializeField] private List<Transform> _missileCheckpoints;
+=======
+>>>>>>> parent of 8bd5e5f (Stale nefunguje target)
 
     public override void Awake()
     {
         base.Awake();
+        _rb = GetComponent<Rigidbody>();
         _targets = new List<GameObject>();
+<<<<<<< HEAD
         //SetCurrentTarget();
         //SetTargetList();
         //_missileCheckpoints = new List<Transform>();
@@ -26,6 +32,10 @@ public class Missile : UnitCommon
     public override void Start()
     {
         base.Start();
+=======
+        SetTarget();
+        SetCurrentTarget();
+>>>>>>> parent of 8bd5e5f (Stale nefunguje target)
     }
 
     private void SetCurrentTarget()
@@ -43,6 +53,7 @@ public class Missile : UnitCommon
 
     private void FixedUpdate()
     {
+<<<<<<< HEAD
         if (_currentTarget != null)
         {
             SetRotation(SetDirection()); 
@@ -78,10 +89,17 @@ public class Missile : UnitCommon
             _currentTarget = _missileCheckpoints[nextIndex];
         }
         
+=======
+        Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
+        Vector3 direction = SetDirection();
+        SetRotation(direction);
+        SetSpeed();
+>>>>>>> parent of 8bd5e5f (Stale nefunguje target)
     }
 
     private Vector3 SetDirection()
     {
+<<<<<<< HEAD
         if (_currentTarget != null)
         {
             Vector3 direction = _currentTarget.position - MyRigidBody.position;
@@ -92,21 +110,26 @@ public class Missile : UnitCommon
         {
             return Vector3.up;
         }
+=======
+        Vector3 direction = _currentTarget.position - _rb.position;
+        direction.Normalize();
+        return direction;
+>>>>>>> parent of 8bd5e5f (Stale nefunguje target)
     }
 
     private void SetRotation(Vector3 direction)
     {
         Vector3 rotationAmonut = Vector3.Cross(transform.forward, direction);
-        MyRigidBody.angularVelocity = rotationAmonut * _rotationForce;
+        _rb.angularVelocity = rotationAmonut * _rotationForce;
     }
 
     private void SetSpeed()
     {
         Speed += _speedExponent;
-        MyRigidBody.velocity = transform.forward * Speed;
+        _rb.velocity = transform.forward * Speed;
     }
 
-    public void SpawnRocket()
+    public void LaunchRocket()
     {
         if (_targets != null && _targets.Count > 0)
         {
@@ -120,23 +143,25 @@ public class Missile : UnitCommon
         }
     }
 
+<<<<<<< HEAD
     public void LaunchRocket()
     {
         SetCurrentTarget();
         SetTargetList();
         SpawnRocket();
     }
+=======
+    private UnitCommon flyUnit;
+>>>>>>> parent of 8bd5e5f (Stale nefunguje target)
 
-    private Attacker flyUnit;
-
-    private void SetTargetList()
+    private void SetTarget()
     {
         _targets.Clear();
         foreach (GameObject fly in Player.FlyObjects)
         {
             if (fly != null)
             {
-                fly.TryGetComponent<Attacker>(out flyUnit);
+                fly.TryGetComponent<UnitCommon>(out flyUnit);
                 if (MyFaction != flyUnit.MyFaction)
                 {
                     _targets.Add(fly);
