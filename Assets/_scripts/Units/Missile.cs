@@ -17,14 +17,15 @@ public class Missile : UnitCommon
     {
         base.Awake();
         _targets = new List<GameObject>();
-        _missileCheckpoints = new List<Transform>();
+        //SetCurrentTarget();
+        //SetTargetList();
+        //_missileCheckpoints = new List<Transform>();
+        _currentTarget = _missileCheckpoints[0];
     }
 
     public override void Start()
     {
         base.Start();
-        SetTargetList();
-        SetCurrentTarget();
     }
 
     private void SetCurrentTarget()
@@ -64,7 +65,6 @@ public class Missile : UnitCommon
         float distance = Vector3.Distance(transform.position, _currentTarget.position);
         return distance <= distanceThreshold;
     }
-
     private void MoveToNextCheckpoint()
     {
         int currentIndex = 0;
@@ -108,7 +108,7 @@ public class Missile : UnitCommon
 
     public void SpawnRocket()
     {
-        if (_targets != null && _targets.Count > 0) //tohle nefunguje 
+        if (_targets != null && _targets.Count > 0)
         {
             Vector3 rocketSpawnPoint = new Vector3(SpawnPoint.position.x, SpawnPoint.position.y, SpawnPoint.position.z);
             Instantiate(gameObject, rocketSpawnPoint, Quaternion.identity);
@@ -122,6 +122,8 @@ public class Missile : UnitCommon
 
     public void LaunchRocket()
     {
+        SetCurrentTarget();
+        SetTargetList();
         SpawnRocket();
     }
 
@@ -130,8 +132,6 @@ public class Missile : UnitCommon
     private void SetTargetList()
     {
         _targets.Clear();
-        //_missileCheckpoints.Clear();
-
         foreach (GameObject fly in Player.FlyObjects)
         {
             if (fly != null)
