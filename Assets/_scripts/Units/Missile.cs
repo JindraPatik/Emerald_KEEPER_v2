@@ -11,13 +11,18 @@ public class Missile : UnitCommon
     [SerializeField] private float _rotationForce;
     [SerializeField] float _speedExponent;
     private List<GameObject> _targets;
-    private Vector3 _direction;
+    [SerializeField] private List<Transform> _missileCheckpoints;
 
     public override void Awake()
     {
         base.Awake();
         _targets = new List<GameObject>();
-        Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
+        _missileCheckpoints = new List<Transform>();
+    }
+
+    public override void Start()
+    {
+        base.Start();
         SetTargetList();
         SetCurrentTarget();
     }
@@ -26,7 +31,7 @@ public class Missile : UnitCommon
     {
         if (_targets != null && _targets.Count > 0)
         {
-            _currentTarget = _targets[0].transform;
+            _currentTarget = _missileCheckpoints[0];
         }
         else
         {
@@ -40,13 +45,39 @@ public class Missile : UnitCommon
         if (_currentTarget != null)
         {
             SetRotation(SetDirection()); 
-            SetDirection();
             SetSpeed();
+
+            if (HasReachedCheckpoint())
+            {
+                MoveToNextCheckpoint();
+            }
         }
         else
         {
             Debug.Log("No current target");
         }
+    }
+
+    private bool HasReachedCheckpoint()
+    {
+        float distanceThreshold = 1f;
+        float distance = Vector3.Distance(transform.position, _currentTarget.position);
+        return distance <= distanceThreshold;
+    }
+
+    private void MoveToNextCheckpoint()
+    {
+        int currentIndex = 0;
+        int nextIndex = (currentIndex + 1) % _missileCheckpoints.Count; // Pokud jsme na posledním checkpointu, pøejít na první checkpoint
+        if (nextIndex == 0)
+        {
+            _currentTarget = _targets[0].transform;
+        }
+        else
+        {
+            _currentTarget = _missileCheckpoints[nextIndex];
+        }
+        
     }
 
     private Vector3 SetDirection()
@@ -99,6 +130,7 @@ public class Missile : UnitCommon
     private void SetTargetList()
     {
         _targets.Clear();
+        //_missileCheckpoints.Clear();
 
         foreach (GameObject fly in Player.FlyObjects)
         {
