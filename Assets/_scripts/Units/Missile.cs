@@ -40,6 +40,7 @@ public class Missile : UnitCommon
 
     private void FixedUpdate()
     {
+<<<<<<< HEAD
         if (_currentTarget != null)
         {
             SetRotation(SetDirection()); 
@@ -78,6 +79,11 @@ public class Missile : UnitCommon
             _currentTarget = _missileCheckpoints[nextIndex];
         }
         
+=======
+        _direction = SetDirection();
+        SetRotation(_direction);
+        SetSpeed();
+>>>>>>> parent of cd16cc9 (Raketa lítá ale nakokot :D)
     }
 
     private Vector3 SetDirection()
