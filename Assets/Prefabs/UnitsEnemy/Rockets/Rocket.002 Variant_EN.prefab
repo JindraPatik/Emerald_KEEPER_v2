@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 62aaded99a5e45141b324c8fd86b5c11, type: 3}
       propertyPath: m_Name
-      value: Rocket.002 Variant
+      value: Rocket.002 Variant_EN
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -158,8 +158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _strenght: 50
-  _spawnpoint: {fileID: 6580055343472680722, guid: ec8b9c487f569024eac2ad440d461db6, type: 3}
-  _myFaction: 0
+  _spawnpoint: {fileID: 5612154064654568162, guid: 57bdbc7a5efb40648b5ca48fb4bacd16, type: 3}
+  _myFaction: 1
   _price: 5
   MyRigidBody: {fileID: 6312215390543696207}
   MyInitialSpeed: 0
