@@ -93,16 +93,8 @@ public class Missile : UnitCommon
 
     public void SpawnRocket()
     {
-        if (_targets != null && _targets.Count > 0) //tohle nefunguje 
-        {
-            Vector3 rocketSpawnPoint = new Vector3(SpawnPoint.position.x, SpawnPoint.position.y, SpawnPoint.position.z);
-            Instantiate(gameObject, rocketSpawnPoint, Quaternion.identity);
-        }
-
-        else
-        {
-            Debug.Log("NO TARGET!!!");
-        }
+        Vector3 rocketSpawnPoint = new Vector3(SpawnPoint.position.x, SpawnPoint.position.y, SpawnPoint.position.z);
+        Instantiate(gameObject, rocketSpawnPoint, Quaternion.identity);
     }
 
     public void LaunchRocket()
@@ -128,7 +120,7 @@ public class Missile : UnitCommon
 
             else
             {
-                Debug.Log("Target is null");
+                Debug.Log("Zadne target v _targets");
             }
         }
     }
