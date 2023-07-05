@@ -12,57 +12,34 @@ public class Missile : UnitCommon
     [SerializeField] float _speedExponent;
     private Rigidbody _rb;
     private List<GameObject> _targets;
-<<<<<<< HEAD
-    [SerializeField] private List<Transform> _missileCheckpoints;
-=======
->>>>>>> parent of 8bd5e5f (Stale nefunguje target)
 
     public override void Awake()
     {
         base.Awake();
         _rb = GetComponent<Rigidbody>();
         _targets = new List<GameObject>();
-<<<<<<< HEAD
         //SetCurrentTarget();
         //SetTargetList();
-        //_missileCheckpoints = new List<Transform>();
-        _currentTarget = _missileCheckpoints[0];
     }
 
     public override void Start()
     {
         base.Start();
-=======
-        SetTarget();
-        SetCurrentTarget();
->>>>>>> parent of 8bd5e5f (Stale nefunguje target)
+        //SetTargetList();
+        //SetCurrentTarget();
+        Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
+        //SetRotation(direction);
+        //Vector3 direction = SetDirection();
+        SetSpeed();
     }
 
-    private void SetCurrentTarget()
-    {
-        if (_targets != null && _targets.Count > 0)
-        {
-            _currentTarget = _missileCheckpoints[0];
-        }
-        else
-        {
-            _currentTarget = null;
-            Debug.Log("Targets is NULL or empty");
-        }
-    }
 
     private void FixedUpdate()
     {
-<<<<<<< HEAD
         if (_currentTarget != null)
         {
             SetRotation(SetDirection()); 
             SetSpeed();
-
-            if (HasReachedCheckpoint())
-            {
-                MoveToNextCheckpoint();
-            }
         }
         else
         {
@@ -70,36 +47,9 @@ public class Missile : UnitCommon
         }
     }
 
-    private bool HasReachedCheckpoint()
-    {
-        float distanceThreshold = 1f;
-        float distance = Vector3.Distance(transform.position, _currentTarget.position);
-        return distance <= distanceThreshold;
-    }
-    private void MoveToNextCheckpoint()
-    {
-        int currentIndex = 0;
-        int nextIndex = (currentIndex + 1) % _missileCheckpoints.Count; // Pokud jsme na posledním checkpointu, pøejít na první checkpoint
-        if (nextIndex == 0)
-        {
-            _currentTarget = _targets[0].transform;
-        }
-        else
-        {
-            _currentTarget = _missileCheckpoints[nextIndex];
-        }
-        
-=======
-        Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
-        Vector3 direction = SetDirection();
-        SetRotation(direction);
-        SetSpeed();
->>>>>>> parent of 8bd5e5f (Stale nefunguje target)
-    }
 
     private Vector3 SetDirection()
     {
-<<<<<<< HEAD
         if (_currentTarget != null)
         {
             Vector3 direction = _currentTarget.position - MyRigidBody.position;
@@ -108,13 +58,8 @@ public class Missile : UnitCommon
         }
         else
         {
-            return Vector3.up;
+            return Vector3.forward;
         }
-=======
-        Vector3 direction = _currentTarget.position - _rb.position;
-        direction.Normalize();
-        return direction;
->>>>>>> parent of 8bd5e5f (Stale nefunguje target)
     }
 
     private void SetRotation(Vector3 direction)
@@ -129,7 +74,7 @@ public class Missile : UnitCommon
         _rb.velocity = transform.forward * Speed;
     }
 
-    public void LaunchRocket()
+    public void SpawnRocket()
     {
         if (_targets != null && _targets.Count > 0)
         {
@@ -143,18 +88,27 @@ public class Missile : UnitCommon
         }
     }
 
-<<<<<<< HEAD
     public void LaunchRocket()
     {
-        SetCurrentTarget();
         SetTargetList();
+        SetCurrentTarget();
         SpawnRocket();
     }
-=======
     private UnitCommon flyUnit;
->>>>>>> parent of 8bd5e5f (Stale nefunguje target)
 
-    private void SetTarget()
+    private void SetCurrentTarget()
+    {
+        if (_targets != null && _targets.Count > 0)
+        {
+            _currentTarget = _targets[0].transform;
+        }
+        else
+        {
+            _currentTarget = null;
+            Debug.Log("Targets is NULL or empty");
+        }
+    }
+    private void SetTargetList()
     {
         _targets.Clear();
         foreach (GameObject fly in Player.FlyObjects)
