@@ -17,13 +17,15 @@ public class Missile : UnitCommon
     {
         base.Awake();
         _targets = new List<GameObject>();
+        //SetCurrentTarget();
+        //SetTargetList();
+        //_missileCheckpoints = new List<Transform>();
         _currentTarget = _missileCheckpoints[0];
     }
 
     public override void Start()
     {
         base.Start();
-        Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
     }
 
     private void SetCurrentTarget()
@@ -34,13 +36,13 @@ public class Missile : UnitCommon
         }
         else
         {
+            _currentTarget = null;
             Debug.Log("Targets is NULL or empty");
         }
     }
 
     private void FixedUpdate()
     {
-<<<<<<< HEAD
         if (_currentTarget != null)
         {
             SetRotation(SetDirection()); 
@@ -55,9 +57,6 @@ public class Missile : UnitCommon
         {
             Debug.Log("No current target");
         }
-        var _direction = SetDirection();
-        SetRotation(_direction);
-        SetSpeed();
     }
 
     private bool HasReachedCheckpoint()
@@ -79,18 +78,20 @@ public class Missile : UnitCommon
             _currentTarget = _missileCheckpoints[nextIndex];
         }
         
-=======
-        _direction = SetDirection();
-        SetRotation(_direction);
-        SetSpeed();
->>>>>>> parent of cd16cc9 (Raketa lítá ale nakokot :D)
     }
 
     private Vector3 SetDirection()
     {
-        Vector3 direction = _currentTarget.position - MyRigidBody.transform.position;
-        direction.Normalize();
-        return direction;
+        if (_currentTarget != null)
+        {
+            Vector3 direction = _currentTarget.position - MyRigidBody.position;
+            direction.Normalize();
+            return direction; 
+        }
+        else
+        {
+            return Vector3.up;
+        }
     }
 
     private void SetRotation(Vector3 direction)
@@ -124,9 +125,6 @@ public class Missile : UnitCommon
         SetCurrentTarget();
         SetTargetList();
         SpawnRocket();
-        SetTargetList();
-        SetCurrentTarget();
-        SetDirection();
     }
 
     private Attacker flyUnit;

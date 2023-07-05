@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945a649694f71174fa2c0e1e4cd2663e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 1
   _strenght: 50
   _spawnpoint: {fileID: 6580055343472680722, guid: ec8b9c487f569024eac2ad440d461db6, type: 3}
   _myFaction: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   _fightTime: 0
   IsMoving: 1
   UnitPosition: {x: 0, y: 0, z: 0}
-  _rotationForce: 50
+  _rotationForce: 5000
   _speedExponent: 1
   _missileCheckpoints:
   - {fileID: 3259614549827884629, guid: 2f4c342f3f02dc34e8d266740ced45cd, type: 3}
