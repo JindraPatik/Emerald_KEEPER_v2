@@ -10,8 +10,10 @@ public class Missile : UnitCommon
     private Transform _currentTarget;
     [SerializeField] private float _rotationForce;
     [SerializeField] float _speedExponent;
+    [SerializeField] private float _aimingDelay;
     private List<GameObject> _targets;
     private Vector3 _direction;
+    private Attacker flyUnit;
 
     public override void Awake()
     {
@@ -39,14 +41,21 @@ public class Missile : UnitCommon
     {
         if (_currentTarget != null)
         {
-            SetRotation(SetDirection());
-            SetDirection();
             SetSpeed();
+            StartCoroutine(AimingActivation());
         }
         else
         {
             Debug.Log("No current target");
         }
+    }
+
+    IEnumerator AimingActivation()
+    {
+        yield return new WaitForSeconds(_aimingDelay);
+
+        SetRotation(SetDirection());
+        SetDirection();
     }
 
     private Vector3 SetDirection()
@@ -94,7 +103,6 @@ public class Missile : UnitCommon
         SpawnRocket();
     }
 
-    private Attacker flyUnit;
 
     private void SetTargetList()
     {
