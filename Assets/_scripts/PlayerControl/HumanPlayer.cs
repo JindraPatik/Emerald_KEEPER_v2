@@ -96,7 +96,7 @@ public class HumanPlayer : Player
                 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    _missile.LaunchRocket();
+                _missile.LaunchRocket();
                 }
                 else if (Input.GetKeyUp(KeyCode.Space))
                 {

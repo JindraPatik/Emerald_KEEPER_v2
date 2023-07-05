@@ -10,16 +10,14 @@ public class Missile : UnitCommon
     private Transform _currentTarget;
     [SerializeField] private float _rotationForce;
     [SerializeField] float _speedExponent;
-    private Rigidbody _rb;
     private List<GameObject> _targets;
+    private Vector3 _direction;
 
     public override void Awake()
     {
         base.Awake();
-        _rb = GetComponent<Rigidbody>();
         _targets = new List<GameObject>();
-        SetTarget();
-        SetCurrentTarget();
+        Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
     }
 
     private void SetCurrentTarget()
@@ -36,15 +34,14 @@ public class Missile : UnitCommon
 
     private void FixedUpdate()
     {
-        Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
-        Vector3 direction = SetDirection();
-        SetRotation(direction);
+        _direction = SetDirection();
+        SetRotation(_direction);
         SetSpeed();
     }
 
     private Vector3 SetDirection()
     {
-        Vector3 direction = _currentTarget.position - _rb.position;
+        Vector3 direction = _currentTarget.position - MyRigidBody.transform.position;
         direction.Normalize();
         return direction;
     }
@@ -52,18 +49,18 @@ public class Missile : UnitCommon
     private void SetRotation(Vector3 direction)
     {
         Vector3 rotationAmonut = Vector3.Cross(transform.forward, direction);
-        _rb.angularVelocity = rotationAmonut * _rotationForce;
+        MyRigidBody.angularVelocity = rotationAmonut * _rotationForce;
     }
 
     private void SetSpeed()
     {
         Speed += _speedExponent;
-        _rb.velocity = transform.forward * Speed;
+        MyRigidBody.velocity = transform.forward * Speed;
     }
 
-    public void LaunchRocket()
+    public void SpawnRocket()
     {
-        if (_targets != null && _targets.Count > 0)
+        if (_targets != null && _targets.Count > 0) //tohle nefunguje 
         {
             Vector3 rocketSpawnPoint = new Vector3(SpawnPoint.position.x, SpawnPoint.position.y, SpawnPoint.position.z);
             Instantiate(gameObject, rocketSpawnPoint, Quaternion.identity);
@@ -75,9 +72,17 @@ public class Missile : UnitCommon
         }
     }
 
-    private UnitCommon flyUnit;
+    public void LaunchRocket()
+    {
+        SpawnRocket();
+        SetTargetList();
+        SetCurrentTarget();
+        SetDirection();
+    }
 
-    private void SetTarget()
+    private Attacker flyUnit;
+
+    private void SetTargetList()
     {
         _targets.Clear();
 
@@ -85,7 +90,7 @@ public class Missile : UnitCommon
         {
             if (fly != null)
             {
-                fly.TryGetComponent<UnitCommon>(out flyUnit);
+                fly.TryGetComponent<Attacker>(out flyUnit);
                 if (MyFaction != flyUnit.MyFaction)
                 {
                     _targets.Add(fly);
