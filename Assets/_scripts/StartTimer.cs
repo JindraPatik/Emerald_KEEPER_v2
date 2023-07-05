@@ -15,6 +15,11 @@ public class StartTimer : MonoBehaviour
         StartCountdown();
     }
 
+    private void Start()
+    {
+        
+    }
+
     private void StartCountdown()
     {
         StartCoroutine(CountdownCoroutine());

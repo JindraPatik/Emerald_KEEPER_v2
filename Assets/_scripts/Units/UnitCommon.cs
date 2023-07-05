@@ -133,7 +133,7 @@ public class UnitCommon : Unit, IDeath
     {
         OnUnitDie?.Invoke();
         UnitPosition = transform.position;
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -185,7 +185,7 @@ public class UnitCommon : Unit, IDeath
     {
         if (this.gameObject.tag == "Fly")
         {
-            Player.FlyObject.Add(this.gameObject);   
+            Player.FlyObjects.Add(this.gameObject);   
         }     
     }
 
@@ -193,7 +193,7 @@ public class UnitCommon : Unit, IDeath
     {
         if (this.gameObject.tag == "Fly")
         {
-            Player.FlyObject.Remove(this.gameObject);
+            Player.FlyObjects.Remove(this.gameObject);
         }
     }
 

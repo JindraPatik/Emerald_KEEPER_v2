@@ -12,7 +12,7 @@ public class HumanPlayer : Player
     [SerializeField] GameObject[] _buttonObjects;
     [SerializeField] List<TMP_Text> _btnPrices, _btnStrenghts;
     [SerializeField] GameObject _rocket;
-    private HomingMissile _hoomingMissile;
+    private Missile _missile;
     private Unit _myUnit;
     public static HumanPlayer HumanPlayerInstance;
 
@@ -22,7 +22,7 @@ public class HumanPlayer : Player
         base.Awake();
         HumanPlayerInstance = this;
         _keyboardCooldown = GetComponent<KeyboardCooldown>();
-        _hoomingMissile = _rocket.GetComponent<HomingMissile>();
+        _missile = _rocket.GetComponent<Missile>();
         _keyboardCooldown.CooldownDisable();
 
 
@@ -96,7 +96,7 @@ public class HumanPlayer : Player
                 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    _hoomingMissile.LaunchRocket();
+                    _missile.LaunchRocket();
                 }
                 else if (Input.GetKeyUp(KeyCode.Space))
                 {

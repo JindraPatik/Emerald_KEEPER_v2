@@ -21,7 +21,7 @@ private UnitCommon unit;
 private float _maxHealth;
 
 public GameObject SpawnedUnit;
-public static List<GameObject> FlyObject = new List<GameObject>();  
+public static List<GameObject> FlyObjects = new List<GameObject>();  
 
 [SerializeField] Unit.Faction _playerFaction;
 [SerializeField] TMP_Text _resourcesTXT;
@@ -65,7 +65,7 @@ public virtual void Start()
 
 void FixedUpdate()
     {
-        Debug.Log("FlyObjects: " + FlyObject.Count);
+        Debug.Log("FlyObjects: " + FlyObjects.Count);
         if(!IsDead)
         {
             if (!GameManager.Instance.GameIsPaused)
@@ -166,7 +166,7 @@ private void OnTriggerEnter(Collider other)
                 UpdateHealthBar(_maxHealth, Health);
                 OnPlayerHit?.Invoke();
                 unit.OnUnitDie();
-                //Destroy(unit.gameObject);
+                Destroy(unit.gameObject);
                 PlayerDeathCondition();
             }
         }
