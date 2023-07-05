@@ -20,13 +20,14 @@ public class Missile : UnitCommon
         base.Awake();
         _targets = new List<GameObject>();
         Debug.Log("Player Fly objects: " + Player.FlyObjects.Count);
-        SetTargetList();
-        SetCurrentTarget();
     }
 
     private void FixedUpdate()
     {
+        SetTargetList();
+        SetCurrentTarget();
         SetSpeed();
+
         if (_currentTarget != null)
         {
             StartCoroutine(AimingActivation());
@@ -74,14 +75,14 @@ public class Missile : UnitCommon
 
     private void SetRotation(Vector3 direction)
     {
-        Vector3 rotationAmonut = Vector3.Cross(transform.forward, direction);
+        Vector3 rotationAmonut = Vector3.Cross(MyRigidBody.transform.forward, direction);
         MyRigidBody.angularVelocity = rotationAmonut * _rotationForce;
     }
 
     private void SetSpeed()
     {
         Speed += _speedExponent;
-        MyRigidBody.velocity = transform.forward * Speed;
+        MyRigidBody.velocity = transform.up * Speed;
     }
 
     public void SpawnRocket()
