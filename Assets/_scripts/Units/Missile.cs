@@ -11,6 +11,7 @@ public class Missile : UnitCommon
     [SerializeField] private float _rotationForce;
     [SerializeField] float _speedExponent;
     [SerializeField] private float _aimingDelay;
+    [SerializeField] private float _rocketAutodestructionTime;
     private List<GameObject> _targets;
     private Vector3 _direction;
     private Attacker flyUnit;
@@ -36,6 +37,11 @@ public class Missile : UnitCommon
         {
             Debug.Log("No current target");
         }
+    }
+
+    public override void Start()
+    {
+        StartCoroutine(DieWithDelay(_rocketAutodestructionTime)); //chipne za 6sec
     }
     private void SetCurrentTarget()
     {
@@ -63,19 +69,19 @@ public class Missile : UnitCommon
     {
         if (_currentTarget != null)
         {
-            Vector3 direction = _currentTarget.position - MyRigidBody.position;
+            Vector3 direction = _currentTarget.transform.position - transform.position;
             direction.Normalize();
             return direction;
         }
         else
         {
-            return Vector3.up;
+            return Vector3.zero;
         }
     }
 
     private void SetRotation(Vector3 direction)
     {
-        Vector3 rotationAmonut = Vector3.Cross(MyRigidBody.transform.forward, direction);
+        Vector3 rotationAmonut = Vector3.Cross(MyRigidBody.transform.up, direction);
         MyRigidBody.angularVelocity = rotationAmonut * _rotationForce;
     }
 
@@ -126,4 +132,19 @@ public class Missile : UnitCommon
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Fly")
+        {
+            Die();
+        }
+    }
+
+    IEnumerator DieWithDelay(float dieDelay) 
+    {
+        yield return new WaitForSeconds(dieDelay);
+        Die();
+    }
+
 }
