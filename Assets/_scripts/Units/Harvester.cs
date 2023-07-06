@@ -77,7 +77,7 @@ public class Harvester : UnitCommon, ICollector
         base.Start();
         SetGoalRotationForFactions();
     }
-    void Update()
+    public virtual void Update()
     {
         if (IsMoving)
         {
