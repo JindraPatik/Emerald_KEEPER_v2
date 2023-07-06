@@ -50,7 +50,6 @@ public class Enemy : Player
                 }
             }
 
-
             if (Input.GetKeyDown(KeyCode.Keypad5))
             {
                 if (_keyboardCooldown.IsKeyboardInputEnabled)
