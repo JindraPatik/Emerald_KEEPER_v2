@@ -29,6 +29,11 @@ public class Thief : Harvester, ICollector
                 Collect();
                 _harvester.Die();
             }
+
+            if (MyFaction != _harvester.MyFaction && !_harvester.IsLoaded)
+            {
+                Die();
+            }
         }
         //Thief narazi do hrace
         if (other.gameObject.TryGetComponent<Player>(out _playerRef))

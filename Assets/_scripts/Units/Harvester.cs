@@ -157,11 +157,6 @@ public class Harvester : UnitCommon, ICollector
 
             OnDeliverCrysral -= PlayDeliveryParticles;
         }
-        //TODO do budoucna ještě počítat že může kolidovat s něčím jiným
-        //else
-        //{
-        //    UnitContact(other);
-        //}
     }
     // Timer
     private float GetCurrent()

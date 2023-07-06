@@ -140,14 +140,10 @@ public class UnitCommon : Unit, IDeath
     {
         UnitContact(other);
     }
-
-    //private Thief thiefRef;
-    //Logic of fight between units
     public override void UnitContact(Collider otherObject)
     {
 
         var otherAttacker = otherObject.gameObject.GetComponentInChildren<Unit>();
-        //otherAttacker.TryGetComponent<Thief>(out thiefRef);
         var thiefRef = otherObject.gameObject.GetComponent<Thief>();
 
         if (otherAttacker != null && MyFaction != otherAttacker.MyFaction)
@@ -181,6 +177,8 @@ public class UnitCommon : Unit, IDeath
                 }
                 // Debug.Log("Jednotky se navzajem znicily.");
             }
+
+
 
         }
 

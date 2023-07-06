@@ -9792,12 +9792,16 @@ PrefabInstance:
       objectReference: {fileID: 986432494}
     - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
       propertyPath: _prefabs.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
       propertyPath: _prefabs.Array.data[4]
       value: 
       objectReference: {fileID: 2658742427449493720, guid: 1a4701f402fe8b946b2af38d8f861167, type: 3}
+    - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
+      propertyPath: _prefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 3967369969024497427, guid: 0e3b872152dce23418abe4039fe81fef, type: 3}
     - target: {fileID: 8345003701296176258, guid: 14c900114946805458538ff66e00bfc1, type: 3}
       propertyPath: _notEnoughResourcesText
       value: 

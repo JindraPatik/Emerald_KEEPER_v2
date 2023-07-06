@@ -50,6 +50,15 @@ public class Enemy : Player
                 }
             }
 
+
+            if (Input.GetKeyDown(KeyCode.Keypad5))
+            {
+                if (_keyboardCooldown.IsKeyboardInputEnabled)
+                {
+                    SendUnit(5);
+                }
+            }
+
             if (Input.GetKeyDown(KeyCode.Keypad0))
             {
                 if (_keyboardCooldown.IsKeyboardInputEnabled)
@@ -57,7 +66,6 @@ public class Enemy : Player
                     SendUnit(4);
                 }
             }
-
         }
     }
 

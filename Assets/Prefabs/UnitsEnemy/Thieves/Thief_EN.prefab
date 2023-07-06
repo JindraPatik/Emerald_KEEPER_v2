@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: -1018930006725284085}
   - component: {fileID: -7878904846158359669}
   m_Layer: 0
-  m_Name: Thief
+  m_Name: Thief_EN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,8 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 55
   _strenght: 1
-  _spawnpoint: {fileID: 1690699897206724365, guid: 595cc6d03d1ad254f996c4648f7ad759, type: 3}
-  _myFaction: 0
+  _spawnpoint: {fileID: 4775277778768898017, guid: 5ffd41b721dd01d42a0da40feedbc737, type: 3}
+  _myFaction: 1
   _price: 5
   MyRigidBody: {fileID: 479859737881915395}
   MyInitialSpeed: 0
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675958cd56a942d4f89eb1fc28e5869f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitAudiSource: {fileID: 0}
-  _unitHitSound: {fileID: 0}
+  _unitAudiSource: {fileID: -7878904846158359669}
+  _unitHitSound: {fileID: 8300000, guid: 4905b595467cd5d49861dd29a7597e83, type: 3}
 --- !u!82 &-7878904846158359669
 AudioSource:
   m_ObjectHideFlags: 0
