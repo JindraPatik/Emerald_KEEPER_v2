@@ -1,10 +1,13 @@
+using EK.Crystal;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Xml;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Picker : Harvester, ICollector
 {
-    // Start is called before the first frame update
     public override void OnEnable()
     {
         base.OnEnable();
@@ -17,8 +20,6 @@ public class Picker : Harvester, ICollector
     {
         base.Start();
     }
-
-    // Update is called once per frame
     public override void Update()
     {
         base.Update();
@@ -26,6 +27,28 @@ public class Picker : Harvester, ICollector
 
     public override void Collect()
     {
-        base.Collect();
+        IsLoaded = true;
+        StopUnitMovement();
+        Speed = MoveDirectionSwitch();
+        MoveAgain();
+    }
+
+
+    private Booster boosterBox;
+    private Player player;
+    public override void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<Booster>(out boosterBox))
+        {
+            Collect();
+            boosterBox.Die();
+        }
+        if (other.gameObject.TryGetComponent<Player>(out player) && IsLoaded)
+        {
+            unLoad();
+            Die();
+        }
+
+
     }
 }

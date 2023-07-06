@@ -139,6 +139,7 @@ public class Harvester : UnitCommon, ICollector
     }
     public virtual void OnTriggerEnter(Collider other) 
     {
+        UnitContact(other);
         //Pokud Harvester narazi do crystalu
         if (other.gameObject.TryGetComponent<Crystal>(out _crystal) && !_isLoaded)
         {
