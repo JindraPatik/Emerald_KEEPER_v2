@@ -93,8 +93,18 @@ public class HumanPlayer : Player
                     _btnClick = _buttonObjects[3].GetComponent<BTN_click>();
                     _btnClick.ButtonUnpressed();
                 }
-                
-                if (Input.GetKeyDown(KeyCode.Space))
+
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    SendUnit(4);
+                }
+                else if (Input.GetKeyUp(KeyCode.S))
+                {
+                    _btnClick = _buttonObjects[4].GetComponent<BTN_click>();
+                    _btnClick.ButtonUnpressed();
+                }
+
+            if (Input.GetKeyDown(KeyCode.Space))
                 {
                     _missile.LaunchRocket();
                 }

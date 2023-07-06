@@ -141,14 +141,19 @@ public class UnitCommon : Unit, IDeath
         UnitContact(other);
     }
 
+    //private Thief thiefRef;
     //Logic of fight between units
     public override void UnitContact(Collider otherObject)
     {
 
         var otherAttacker = otherObject.gameObject.GetComponentInChildren<Unit>();
+        //otherAttacker.TryGetComponent<Thief>(out thiefRef);
+        var thiefRef = otherObject.gameObject.GetComponent<Thief>();
 
         if (otherAttacker != null && MyFaction != otherAttacker.MyFaction)
         {
+            otherAttacker.TryGetComponent<Thief>(out thiefRef);
+
             if (Strenght > otherAttacker.Strenght)
             {
                 OnUnitHit?.Invoke();
@@ -161,7 +166,7 @@ public class UnitCommon : Unit, IDeath
                 // Debug.Log("Utocnik byl zabit!");
             }
 
-            else if (Strenght < otherAttacker.Strenght)
+            else if ((Strenght < otherAttacker.Strenght) && !thiefRef)
             {
                 Die();
                 // Debug.Log("Moje jednotka byla zabita.");

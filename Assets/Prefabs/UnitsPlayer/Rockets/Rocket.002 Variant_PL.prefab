@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket.002 Variant_PL
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 62aaded99a5e45141b324c8fd86b5c11, type: 3}
+      propertyPath: m_TagString
+      value: Fly
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

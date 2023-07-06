@@ -143,7 +143,8 @@ private bool bIsReadyToAction = true;
             action.Invoke();
             bIsReadyToAction = false;
         }
-    }    
+    }
+    private Thief thief;
 private void OnTriggerEnter(Collider other) 
 {
     // pokud koliduje s harvesterem, přičti crystal
@@ -157,10 +158,12 @@ private void OnTriggerEnter(Collider other)
         }
     }
 
+
     if (other.gameObject.TryGetComponent<UnitCommon>(out unit))
     {
-        //pokud má jednotka jinou frakci
-        if (unit.MyFaction != _playerFaction)
+        unit.TryGetComponent<Thief>(out thief);
+            
+        if ((unit.MyFaction != _playerFaction) && !thief)
             {
                 Health -= unit.Strenght;
                 UpdateHealthBar(_maxHealth, Health);

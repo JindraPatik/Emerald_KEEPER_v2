@@ -37,6 +37,18 @@ public class Harvester : UnitCommon, ICollector
         get { return _isLoaded; }
         set { _isLoaded = value; }
     }
+
+    public bool IsMovingUp
+    {
+        get { return _isMovingUp; }
+        set { _isMovingUp = value; }
+    }
+
+    public Vector3 UnitCurrentPosition
+    {
+        get { return _unitCurrentPosition; }
+        set { _unitCurrentPosition = value; }
+    }
     #endregion
     
     #region InitialMethods
@@ -103,7 +115,7 @@ public class Harvester : UnitCommon, ICollector
     #endregion
 
     #region Interface Methods
-    public void Collect()
+    public virtual void Collect()
     {
         _isLoaded = true;
         OnCrystalCollect?.Invoke();
@@ -125,7 +137,7 @@ public class Harvester : UnitCommon, ICollector
     {
         _crystalCollected = crystal.CrystalValue;
     }
-    private void OnTriggerEnter(Collider other) 
+    public virtual void OnTriggerEnter(Collider other) 
     {
         //Pokud Harvester narazi do crystalu
         if (other.gameObject.TryGetComponent<Crystal>(out _crystal) && !_isLoaded)
@@ -146,10 +158,10 @@ public class Harvester : UnitCommon, ICollector
             OnDeliverCrysral -= PlayDeliveryParticles;
         }
         //TODO do budoucna ještě počítat že může kolidovat s něčím jiným
-        else
-        {
-            UnitContact(other);
-        }
+        //else
+        //{
+        //    UnitContact(other);
+        //}
     }
     // Timer
     private float GetCurrent()
