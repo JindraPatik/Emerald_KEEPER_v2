@@ -152,18 +152,18 @@ public class UnitCommon : Unit, IDeath
             {
                 OnUnitHit?.Invoke();
 
-                if (otherAttacker is IDeath otherAttackerDeath)
+                if (otherAttacker is IDeath otherAttackerDeath && !thiefRef)
                 {
                     StartCoroutine(StopToAttack());
                     otherAttackerDeath.Die();
                 }
-                // Debug.Log("Utocnik byl zabit!");
+                Debug.Log("Utocnik byl zabit!");
             }
 
             else if ((Strenght < otherAttacker.Strenght) && !thiefRef)
             {
                 Die();
-                // Debug.Log("Moje jednotka byla zabita.");
+                Debug.Log("Moje jednotka byla zabita.");
             }
 
             else if (Strenght == otherAttacker.Strenght)
@@ -173,7 +173,7 @@ public class UnitCommon : Unit, IDeath
                 {
                     otherAttackerDeath.Die();
                 }
-                // Debug.Log("Jednotky se navzajem znicily.");
+                Debug.Log("Jednotky se navzajem znicily.");
             }
 
 
