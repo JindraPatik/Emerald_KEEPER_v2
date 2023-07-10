@@ -142,12 +142,9 @@ public class UnitCommon : Unit, IDeath
     {
 
         var otherAttacker = otherObject.gameObject.GetComponentInChildren<Unit>();
-        var thiefRef = otherObject.gameObject.GetComponent<Thief>();
 
         if (otherAttacker != null && MyFaction != otherAttacker.MyFaction)
         {
-            otherAttacker.TryGetComponent<Thief>(out thiefRef);
-
             if (Strenght > otherAttacker.Strenght)
             {
                 OnUnitHit?.Invoke();

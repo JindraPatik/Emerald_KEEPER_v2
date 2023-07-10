@@ -15,7 +15,7 @@ public class Attacker : UnitCommon
     }
     
 
-    public void Update()
+    public virtual void Update()
     {
         if (IsMoving)
         {
@@ -30,6 +30,11 @@ public class Attacker : UnitCommon
         }
     }
 
-    
+    public override void UnitContact(Collider otherObject)
+    {
+        base.UnitContact(otherObject);
+    }
+
+
 
 }
