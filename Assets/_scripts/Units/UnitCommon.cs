@@ -152,7 +152,7 @@ public class UnitCommon : Unit, IDeath
             {
                 OnUnitHit?.Invoke();
 
-                if (otherAttacker is IDeath otherAttackerDeath && !thiefRef)
+                if (otherAttacker is IDeath otherAttackerDeath)
                 {
                     StartCoroutine(StopToAttack());
                     otherAttackerDeath.Die();
@@ -160,7 +160,7 @@ public class UnitCommon : Unit, IDeath
                 Debug.Log("Utocnik byl zabit!");
             }
 
-            else if ((Strenght < otherAttacker.Strenght) && !thiefRef)
+            else if ((Strenght < otherAttacker.Strenght))
             {
                 Die();
                 Debug.Log("Moje jednotka byla zabita.");

@@ -30,9 +30,9 @@ public class Thief : Harvester, ICollector
                 _harvester.Die();
             }
 
-            if (MyFaction != _harvester.MyFaction && !_harvester.IsLoaded)
+            else
             {
-                Die();
+                UnitContact(other);
             }
         }
         //Thief narazi do hrace
