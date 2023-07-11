@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5077002057056540742}
   - component: {fileID: 5018063141705493642}
   - component: {fileID: 4956781037011058048}
+  - component: {fileID: 7902401719421100823}
   m_Layer: 0
-  m_Name: Baloon_supplies_pref
+  m_Name: Balloon_supplies_pref
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,6 +83,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7902401719421100823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303380141080805716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5287532a1328444187585d8f166edd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &967418315194670411
 PrefabInstance:
   m_ObjectHideFlags: 0
