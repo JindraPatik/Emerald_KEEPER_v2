@@ -942,8 +942,9 @@ MonoBehaviour:
   - {fileID: 1504235607}
   _boosterPrefab: {fileID: 8303380141080805716, guid: 045936c960a8fce459b19c172847269d, type: 3}
   _spawnIntervalBetweenSec:
-  - 1
-  - 20
+  - 10
+  - 25
+  _timeBeforeStartSpawning: 10
 --- !u!1 &87747248
 GameObject:
   m_ObjectHideFlags: 0

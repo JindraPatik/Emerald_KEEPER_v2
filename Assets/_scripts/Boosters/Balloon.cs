@@ -9,15 +9,29 @@ public class Balloon : MonoBehaviour
     [SerializeField] private GameObject _supplyCrate;
     private ConstantForce _constantForce;
     private Transform _myCurrentTransform;
+    [SerializeField] float _hangingSpeed;
+    [SerializeField] float _hangingAmplitude;
+    [SerializeField] float _crateRotationSpeed;
+    [SerializeField] float _crateRotationAmplitude;
 
 
-    
+
     private void Start()
     {
         GetRandomLocalTorque();
     }
 
-    
+    private void Update()
+    {
+        float tZ = Time.time * _hangingSpeed;
+        float tY = Time.time * _crateRotationSpeed;
+        float rotationZ = Mathf.Sin(tZ) * _hangingAmplitude;
+        float rotationY = Mathf.Sin(tY) * _crateRotationAmplitude;
+
+        Quaternion rotation = Quaternion.Euler(transform.localRotation.x, rotationY , rotationZ);
+        transform.localRotation = rotation;
+    }
+
     private void GetRandomLocalTorque()
     {
         _constantForce = GetComponent<ConstantForce>();
@@ -28,6 +42,7 @@ public class Balloon : MonoBehaviour
     }
 
     private TerrainCollider terrain;
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.TryGetComponent<TerrainCollider>(out terrain)) 

@@ -55,8 +55,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 36.136612, z: 16}
-  m_Center: {x: 0, y: 15.431693, z: 0}
+  m_Size: {x: 7, y: 34.556908, z: 16}
+  m_Center: {x: 0, y: 16.221546, z: 0}
 --- !u!54 &4956781037011058048
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ ConstantForce:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8303380141080805716}
   m_Enabled: 1
-  m_Force: {x: 0, y: -0.1, z: 0}
+  m_Force: {x: 0, y: -0.05, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
@@ -111,6 +111,10 @@ MonoBehaviour:
   _minTorqueRadius: -0.2
   _maxTorqueRadius: 0.2
   _supplyCrate: {fileID: 4026814868612921474, guid: 2f2ff66824d860f4ea7498641d2fd9b8, type: 3}
+  _hangingSpeed: 0.5
+  _hangingAmplitude: 5
+  _crateRotationSpeed: 1
+  _crateRotationAmplitude: 45
 --- !u!1001 &967418315194670411
 PrefabInstance:
   m_ObjectHideFlags: 0

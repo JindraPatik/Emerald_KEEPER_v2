@@ -11,6 +11,7 @@ public class BoosterSpawner : MonoBehaviour
     private float _randomSpawnRange;
     [SerializeField] GameObject _boosterPrefab;
     [SerializeField] float[] _spawnIntervalBetweenSec;
+    [SerializeField] float _timeBeforeStartSpawning;
 
 
 
@@ -55,8 +56,10 @@ public class BoosterSpawner : MonoBehaviour
     private IEnumerator SpawnBoostersInRandomRange()
     {
 
+
         while (BoosterSpawningEnabled)
         {
+            yield return new WaitForSeconds(_timeBeforeStartSpawning);
             float spawnIntervalTime = UnityEngine.Random.Range(_spawnIntervalBetweenSec[0], _spawnIntervalBetweenSec[1]);
 
             if (!GameManager.Instance.GameIsPaused)
@@ -66,6 +69,7 @@ public class BoosterSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnIntervalTime);
         }
     }
+
 
 
 }
