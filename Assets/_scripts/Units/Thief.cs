@@ -15,6 +15,7 @@ public class Thief : Harvester, ICollector
         IsLoaded = true;
         StopUnitMovement();
         IsMovingUp = true;
+        Speed = Speed / 2;
         Speed = MoveDirectionSwitch();
     }
 
