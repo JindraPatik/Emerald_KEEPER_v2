@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5077002057056540742}
   - component: {fileID: 5018063141705493642}
   - component: {fileID: 4956781037011058048}
-  - component: {fileID: 7902401719421100823}
   - component: {fileID: -2612308937992957219}
+  - component: {fileID: 7902401719421100823}
   m_Layer: 0
   m_Name: Balloon_supplies_pref
-  m_TagString: Untagged
+  m_TagString: Fly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 785399471556000416}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5018063141705493642
 BoxCollider:
@@ -55,8 +55,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 35, z: 16}
-  m_Center: {x: 0, y: 16, z: 0}
+  m_Size: {x: 7, y: 36.136612, z: 16}
+  m_Center: {x: 0, y: 15.431693, z: 0}
 --- !u!54 &4956781037011058048
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -84,6 +84,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!75 &-2612308937992957219
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303380141080805716}
+  m_Enabled: 1
+  m_Force: {x: 0, y: -0.1, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!114 &7902401719421100823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,18 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5287532a1328444187585d8f166edd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!75 &-2612308937992957219
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8303380141080805716}
-  m_Enabled: 1
-  m_Force: {x: 1, y: -0.1, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 0, y: 0.1, z: 0}
+  _minTorqueRadius: -0.2
+  _maxTorqueRadius: 0.2
+  _supplyCrate: {fileID: 4026814868612921474, guid: 2f2ff66824d860f4ea7498641d2fd9b8, type: 3}
 --- !u!1001 &967418315194670411
 PrefabInstance:
   m_ObjectHideFlags: 0
