@@ -22,17 +22,16 @@ public class Attacker : UnitCommon
             Move(Speed);
         }
 
-        if (_current >= _endTime) //nevi co je current
-        {
-            IsMoving = true;
-            _current = 0;
-            MoveAgain();
-        }
+        //if (_current >= _endTime) //nevi co je current
+        //{
+        //    IsMoving = true;
+        //    _current = 0;
+        //    MoveAgain();
+        //}
     }
-
-    public override void UnitContact(Collider otherObject)
+    public virtual void OnTriggerEnter(Collider other)
     {
-        base.UnitContact(otherObject);
+        UnitContact(other);
     }
 
 

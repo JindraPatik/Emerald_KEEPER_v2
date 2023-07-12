@@ -141,17 +141,17 @@ public class UnitCommon : Unit, IDeath
     public override void UnitContact(Collider otherObject)
     {
 
-        var otherAttacker = otherObject.gameObject.GetComponentInChildren<Unit>();
+        var otherAttacker = otherObject.gameObject.GetComponentInParent<Unit>();
 
         if (otherAttacker != null && MyFaction != otherAttacker.MyFaction)
         {
             if (Strenght > otherAttacker.Strenght)
             {
                 OnUnitHit?.Invoke();
+                StartCoroutine(StopToAttack());
 
                 if (otherAttacker is IDeath otherAttackerDeath)
                 {
-                    StartCoroutine(StopToAttack());
                     otherAttackerDeath.Die();
                 }
                 Debug.Log("Utocnik byl zabit!");

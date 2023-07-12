@@ -111,8 +111,8 @@ MonoBehaviour:
   _minTorqueRadius: -0.2
   _maxTorqueRadius: 0.2
   _supplyCrate: {fileID: 4026814868612921474, guid: 2f2ff66824d860f4ea7498641d2fd9b8, type: 3}
-  _hangingSpeed: 0.5
-  _hangingAmplitude: 5
+  _hangingSpeed: 1
+  _hangingAmplitude: 8
   _crateRotationSpeed: 1
   _crateRotationAmplitude: 45
 --- !u!1001 &967418315194670411
