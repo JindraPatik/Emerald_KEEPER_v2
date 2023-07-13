@@ -6,7 +6,7 @@ using System.Xml;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class Picker : Harvester, ICollector
+public class Picker : Harvester, ICollector, IDeath
 {
     public override void OnEnable()
     {
@@ -36,6 +36,7 @@ public class Picker : Harvester, ICollector
 
     private Booster boosterBox;
     private Player player;
+    private Unit unit;
     public override void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<Booster>(out boosterBox))
@@ -46,6 +47,11 @@ public class Picker : Harvester, ICollector
         if (other.gameObject.TryGetComponent<Player>(out player) && IsLoaded)
         {
             unLoad();
+            Die();
+        }
+
+        if (other.gameObject.TryGetComponent<Unit>(out unit))
+        {
             Die();
         }
 
