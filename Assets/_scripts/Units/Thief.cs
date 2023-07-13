@@ -10,6 +10,8 @@ public class Thief : Harvester, ICollector
     private Harvester _harvester;
     private Player _playerRef;
     [SerializeField] private float _stolenResources;
+
+    
     public override void Collect()
     {
         IsLoaded = true;

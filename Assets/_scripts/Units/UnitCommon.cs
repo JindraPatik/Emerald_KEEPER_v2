@@ -121,11 +121,9 @@ public class UnitCommon : Unit, IDeath
         yield return new WaitForSeconds(_fightTime);
         MoveAgain();
     }
-
     #endregion
 
     #region Methods
-
     //interface die
     public void Die()
     {
@@ -140,7 +138,6 @@ public class UnitCommon : Unit, IDeath
     }
     public override void UnitContact(Collider otherObject)
     {
-
         var otherAttacker = otherObject.gameObject.GetComponentInParent<Unit>();
 
         if (otherAttacker != null && MyFaction != otherAttacker.MyFaction)
@@ -148,11 +145,11 @@ public class UnitCommon : Unit, IDeath
             if (Strenght > otherAttacker.Strenght)
             {
                 OnUnitHit?.Invoke();
-                StartCoroutine(StopToAttack());
 
                 if (otherAttacker is IDeath otherAttackerDeath)
                 {
-                    otherAttackerDeath.Die();
+                   StartCoroutine(StopToAttack());
+                   otherAttackerDeath.Die();
                 }
                 Debug.Log("Utocnik byl zabit!");
             }
@@ -172,13 +169,8 @@ public class UnitCommon : Unit, IDeath
                 }
                 Debug.Log("Jednotky se navzajem znicily.");
             }
-
-
-
         }
-
     }
-
     public void AddUnitToFlyList()
     {
         if (this.gameObject.tag == "Fly")
@@ -186,7 +178,6 @@ public class UnitCommon : Unit, IDeath
             Player.FlyObjects.Add(this.gameObject);   
         }     
     }
-
     public void RemoveUnitFromFlyList()
     {
         if (this.gameObject.tag == "Fly")

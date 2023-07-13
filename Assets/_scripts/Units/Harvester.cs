@@ -101,7 +101,7 @@ public class Harvester : UnitCommon, ICollector
             MoveAgain();
         }
     }
-   private void SetGoalRotationForFactions()
+   public void SetGoalRotationForFactions()
     {
         if (MyFaction == Faction.Player)
         {
