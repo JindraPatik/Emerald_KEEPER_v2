@@ -245,7 +245,7 @@ MonoBehaviour:
   _price: 10
   MyRigidBody: {fileID: 77495236875070139}
   MyInitialSpeed: 0
-  _fightTime: 1
+  _fightTime: 0.1
   IsMoving: 1
   UnitPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &6420949498339961646

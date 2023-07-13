@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attacker : UnitCommon
+public class Attacker : UnitCommon, IDeath
 {
-    private float _current = 0f;
-    private float _endTime = 1f;
+    //private float _current = 0f;
+    //private float _endTime = 1f;
 
     public override void Awake()
     {
@@ -13,7 +13,11 @@ public class Attacker : UnitCommon
         IsMoving = true;
         FlipInitialRotation();
     }
-    
+    public override void Start()
+    {
+        base.Start();
+    }
+
 
     public virtual void Update()
     {
@@ -21,13 +25,14 @@ public class Attacker : UnitCommon
         {
             Move(Speed);
         }
-
+        else
+        {
+            Move(SetSpeedToZero());
+        }
     }
     //public override void OnTriggerEnter(Collider other)
     //{
     //    UnitContact(other);
     //}
-
-
 
 }

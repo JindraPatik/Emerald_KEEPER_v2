@@ -224,10 +224,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 30
-  _strenght: 5
+  _strenght: 15
   _spawnpoint: {fileID: 7710940153639705187, guid: ec7daeec2685b124e9daf672e352ac2f, type: 3}
   _myFaction: 0
-  _price: 8
+  _price: 10
   MyRigidBody: {fileID: 77495236875070139}
   MyInitialSpeed: 0
   _fightTime: 1

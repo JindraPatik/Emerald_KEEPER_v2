@@ -6,7 +6,7 @@ using EK.Crystal;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Harvester : UnitCommon, ICollector
+public class Harvester : UnitCommon, ICollector, IDeath
 {
     #region Variables
         

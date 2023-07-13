@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class Thief : Harvester, ICollector
+public class Thief : Harvester, ICollector, IDeath
 {
     private Crystal _crystalRef;
     private Harvester _harvester;
