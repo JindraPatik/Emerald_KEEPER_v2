@@ -18,6 +18,12 @@ public class UnitCommon : Unit, IDeath
     public Action OnUnitSpawn;
     public Action OnUnitHit;
 
+    public float FightTime
+    { 
+        get { return _fightTime; } 
+        set { _fightTime = value; }
+    }
+
     #endregion
 
     #region Initial Methods
@@ -118,7 +124,7 @@ public class UnitCommon : Unit, IDeath
     IEnumerator StopToAttack()
     {
         StopUnitMovement();
-        yield return new WaitForSeconds(_fightTime);
+        yield return new WaitForSeconds(FightTime);
         MoveAgain();
     }
     #endregion
@@ -132,11 +138,11 @@ public class UnitCommon : Unit, IDeath
         Destroy(this.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         UnitContact(other);
     }
-    public override void UnitContact(Collider otherObject)
+    public virtual void UnitContact(Collider otherObject)
     {
         var otherAttacker = otherObject.gameObject.GetComponentInParent<Unit>();
 
@@ -149,7 +155,7 @@ public class UnitCommon : Unit, IDeath
                 if (otherAttacker is IDeath otherAttackerDeath)
                 {
                    StartCoroutine(StopToAttack());
-                   otherAttackerDeath.Die();
+                   //otherAttackerDeath.Die();
                 }
                 Debug.Log("Utocnik byl zabit!");
             }

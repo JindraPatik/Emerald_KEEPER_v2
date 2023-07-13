@@ -10,33 +10,36 @@ public class Thief : Harvester, ICollector
     private Harvester _harvester;
     private Player _playerRef;
     [SerializeField] private float _stolenResources;
-
     
     public override void Collect()
     {
         IsLoaded = true;
         StopUnitMovement();
         IsMovingUp = true;
+        Speed = Speed / 2;
         Speed = MoveDirectionSwitch();
     }
 
     public override void OnTriggerEnter(Collider other)
     {
         //Pokud Thief narazi do Harvesteru
-        if (other.gameObject.TryGetComponent<Harvester>(out _harvester) && !IsLoaded)
+        if (other.gameObject.TryGetComponent<Harvester>(out _harvester))
         {
-
             if (MyFaction != _harvester.MyFaction && _harvester.IsLoaded)
             {
                 Collect();
                 _harvester.Die();
             }
-
-            else
+            else if (other != _harvester)
             {
                 UnitContact(other);
             }
         }
+        else if (!other.gameObject.TryGetComponent<Crystal>(out _crystalRef))
+        {
+            base.OnTriggerEnter(other);
+        }
+
         //Thief narazi do hrace
         if (other.gameObject.TryGetComponent<Player>(out _playerRef))
         {

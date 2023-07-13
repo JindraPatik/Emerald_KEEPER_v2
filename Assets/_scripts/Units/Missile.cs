@@ -125,7 +125,7 @@ public class Missile : UnitCommon
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Fly")
         {

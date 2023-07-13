@@ -49,7 +49,7 @@ public abstract class Unit : MonoBehaviour
    
     public abstract void Move(float speed);
 
-    public abstract void UnitContact(Collider other);
+    //public abstract void UnitContact(Collider other);
 
     #endregion
     

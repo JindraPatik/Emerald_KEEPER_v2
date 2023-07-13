@@ -137,7 +137,7 @@ public class Harvester : UnitCommon, ICollector
     {
         _crystalCollected = crystal.CrystalValue;
     }
-    public virtual void OnTriggerEnter(Collider other) 
+    public override void OnTriggerEnter(Collider other) 
     {
         UnitContact(other);
         //Pokud Harvester narazi do crystalu

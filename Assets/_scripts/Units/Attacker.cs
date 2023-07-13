@@ -23,10 +23,10 @@ public class Attacker : UnitCommon
         }
 
     }
-    public virtual void OnTriggerEnter(Collider other)
-    {
-        UnitContact(other);
-    }
+    //public override void OnTriggerEnter(Collider other)
+    //{
+    //    UnitContact(other);
+    //}
 
 
 
