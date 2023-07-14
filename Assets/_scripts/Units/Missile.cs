@@ -99,7 +99,10 @@ public class Missile : UnitCommon
 
     public void LaunchRocket()
     {
-        SpawnRocket();
+        if (!GameManager.Instance.GameIsPaused)
+        {
+            SpawnRocket(); 
+        }
     }
 
 
