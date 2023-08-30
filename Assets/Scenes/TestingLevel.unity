@@ -7128,7 +7128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8811e30a9e36069488cc9666f25b82e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _counterTime: 1
+  _counterTime: 3
   _counterText: {fileID: 653196403}
 --- !u!1 &1184715406
 GameObject:
